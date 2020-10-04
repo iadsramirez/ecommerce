@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "login-ng-93002": {
+      "hosting": {
+        "multikart": [
+          "login-ng-93002"
+        ]
+      }
+    }
+  }
+}

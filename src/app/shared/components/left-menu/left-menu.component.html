@@ -1,0 +1,38 @@
+<div class="navbar">
+  <a href="javascript:void(0)" (click)="leftMenuToggle()">
+    <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i></div>
+  </a>
+  <div id="mySidenav" class="sidenav" [class.openSide]="navServices?.leftMenuToggle">
+    <a href="javascript:void(0)" class="sidebar-overlay" (click)="leftMenuToggle()"></a>
+    <nav>
+      <div (click)="leftMenuToggle()">
+        <div class="sidebar-back text-left"><i class="fa fa-angle-left pr-2" aria-hidden="true"></i> Atras
+        </div>
+      </div>
+      <ul id="sub-menu" class="sidebar-menu">
+        <li *ngFor="let menuItem of menuNuevo">
+
+          <a [routerLink]="menuItem.path">
+            {{menuItem.nombre}}
+            <span class="sub-arrow"></span>
+          </a>
+
+
+          <ng-container *ngIf="menuItem" >
+            <ul>
+              <li *ngFor="let item of menuItem.lista"  >
+                <a href="">{{item.nombre}}</a></li>
+              
+            </ul>
+          </ng-container>
+
+          
+
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+
+
+</div>

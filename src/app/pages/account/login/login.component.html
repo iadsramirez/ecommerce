@@ -1,0 +1,59 @@
+<app-breadcrumb [title]="'Ingreso'" [breadcrumb]="'Ingreso'"></app-breadcrumb>
+<!-- section start -->
+<section class="login-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h4 *ngIf="msj?.length > 0 ">
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <strong>Error:</strong>{{msj}}
+                    </div>
+                </h4>
+
+
+                <h3>Ingreso</h3>
+                <div class="theme-card">
+                    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="theme-form">
+                        <div class="form-group">
+                            <label for="email">Correo</label>
+                            <input type="email" [ngClass]="{
+                                'is-invalid':
+                                loginForm.get('email').errors && loginForm.get('email').touched
+                              }" class="form-control" id="email" formControlName="email" placeholder="Correo" required>
+                        </div>
+
+                        <div class="form-group" *ngIf="
+        (loginForm.get('email').touched &&
+        loginForm.get('email').hasError('required'))||(loginForm.get('email').touched &&
+        loginForm.get('email').hasError('pattern')) ">
+                            <div class="alert alert-danger" role="alert">
+                                Proporcione correo valido
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="review">Clave</label>
+                            <input type="password" class="form-control" id="review" formControlName="password"
+                                placeholder="Ingrese Clave" required="">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-solid">Acceder</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 right-login">
+                <h3>Registrarse</h3>
+                <div class="theme-card authentication-right">
+                    <h6 class="title-font">Crear Cuenta</h6>
+                    <p>Para poder comprar es necesario Registrarse</p>
+                    <button class="btn btn-solid" [routerLink]="'/pages/register'">Crear una Cuenta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section ends-->
