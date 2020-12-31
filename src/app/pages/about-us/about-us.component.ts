@@ -1,14 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamSlider, TestimonialSlider } from '../../shared/data/slider';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
-  styleUrls: ['./about-us.component.scss']
+  styleUrls: ['./about-us.component.scss'],
+  providers: [
+    AuthService
+],
 })
 export class AboutUsComponent implements OnInit {
 
-  constructor() { }
+  proveedor:any;
+  constructor(private auth:AuthService) {
+
+  auth.obtenerProveedor().subscribe(
+    data=>{
+     
+      this.proveedor=data;
+    }
+  );
+   }
+
+
 
   ngOnInit(): void {
   }

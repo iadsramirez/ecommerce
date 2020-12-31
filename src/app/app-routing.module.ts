@@ -5,6 +5,8 @@ import { ShopComponent } from './shop/shop.component';
 import { PagesComponent } from './pages/pages.component';
 import { ElementsComponent } from './elements/elements.component';
 import { LoginComponent } from './pages/account/login/login.component';
+import { CaruselComponent } from './shop/carusel/carusel.component';
+import { ToolsComponent } from './home/tools/tools.component';
 
 
 const routes: Routes = [
@@ -13,9 +15,11 @@ const routes: Routes = [
      redirectTo: 'home/fashion',
      pathMatch: 'full'
    },*/
-
+/*
   { path: 'pages/login', component: LoginComponent },
-  { path: '', redirectTo: 'pages/login', pathMatch: 'full' },
+  { path: '', redirectTo: 'pages/login', pathMatch: 'full' },*/
+  { path: 'home/tools',component: ToolsComponent},
+  { path: '', redirectTo: 'home/tools', pathMatch: 'full' },
 
   {
     path: 'home',
@@ -45,7 +49,7 @@ const routes: Routes = [
 
   {
     path: '**', // Navigate to Home Page if not found any page
-    redirectTo: 'pages/login',
+    redirectTo: 'home/tools',
   },
 
 

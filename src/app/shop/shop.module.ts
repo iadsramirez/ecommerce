@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { Ng5SliderModule } from 'ng5-slider';
 import { SharedModule } from '../shared/shared.module';
 import { ShopRoutingModule } from './shop-routing.module';
+
 
 // Product Details Components
 import { ProductLeftSidebarComponent } from './product/sidebar/product-left-sidebar/product-left-sidebar.component';
@@ -39,6 +40,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { CompareComponent } from './compare/compare.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SuccessComponent } from './checkout/success/success.component';
+import { CaruselComponent } from './carusel/carusel.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,9 @@ import { SuccessComponent } from './checkout/success/success.component';
     WishlistComponent,
     CompareComponent,
     CheckoutComponent,
-    SuccessComponent
+    SuccessComponent,
+    CaruselComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -75,6 +80,8 @@ import { SuccessComponent } from './checkout/success/success.component';
     Ng5SliderModule,
     SharedModule,
     ShopRoutingModule
-  ]
+   
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ShopModule { }

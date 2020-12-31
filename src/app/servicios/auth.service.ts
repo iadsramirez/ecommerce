@@ -20,7 +20,7 @@ export class AuthService {
 
   public user: User;
   public mensaje: string;
-  baseurl:string=`http://127.0.0.1:8080/ecommerce/webresources/com.ecommerce.entidades.`;
+  baseurl:string=`http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.`;
 
 
   constructor(public afAuth: AngularFireAuth, private router: Router, private http: HttpClient) { }
@@ -108,6 +108,11 @@ export class AuthService {
   obtenerSubCategoria(): Observable<SubCategoria[]> {
     return this.http.get<SubCategoria[]>(`${this.baseurl}subcategoria`);
 
+  }
+
+
+  obtenerProveedor():Observable<any>{
+    return  this.http.get(`http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio`);
   }
 
 

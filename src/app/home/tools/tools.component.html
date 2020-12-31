@@ -4,44 +4,48 @@
 <section class="p-0 height-85 tools_slider">
     <owl-carousel-o [options]="HomeSliderConfig" class="home-slider">
         <ng-template carouselSlide>
-            <div class="home text-center" [ngStyle]="{'background-image': 'url(assets/images/slider/21.jpg)'}">
+            <div class="home text-center" [ngStyle]="{'background-image': 'url(assets/images/slider/32.jpg)'}">
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <div class="slider-contain">
                                 <div>
-                                    <h4>welcome to tools</h4>
-                                    <h1>auto parts</h1>
+                                    <h4>Bienvenidos</h4>
+                                    <h1>Mi Bodeguita</h1>
                                     <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'tools'}" class="btn btn-solid">shop now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    
                     <div class="tools-parts" id="tools-move">
-                        <img src="assets/images/tools-2.png" class="img-fluid" alt="">
+                        <img src="assets/images/slider/33.jpg" class="img-fluid" alt="">
                     </div>
                     <div class="tools-parts1" id="tools-move1">
-                        <img src="assets/images/tools-3.png" class="img-fluid" alt="">
+                        <img src="assets/images/slider/34.jpg" class="img-fluid" alt="">
                     </div>
+
+
                 </div>
             </div>
         </ng-template>
         <ng-template carouselSlide>
-            <div class="home text-center" [ngStyle]="{'background-image': 'url(assets/images/slider/22.jpg)'}">
+            <div class="home text-center" [ngStyle]="{'background-image': 'url(assets/images/slider/33.jpg)'}">
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <div class="slider-contain">
                                 <div>
-                                    <h4>welcome to tools</h4>
-                                    <h1>auto parts</h1>
+                                    <h4>Ahorra Comprando</h4>
+                                    <h1>Mi Bodeguita</h1>
                                     <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'tools'}" class="btn btn-solid">shop now</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="tools-parts" id="tools-move2">
-                        <img src="assets/images/tools-1.png" class="img-fluid" alt="">
+                        <img src="assets/images/slider/35.jpg" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
@@ -66,13 +70,12 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <div class="title3">
-                    <h2 class="title-inner3">welcome to tool store</h2>
+                    <h2 class="title-inner3">Adquiere Lo mejor de Nuestra Tienda</h2>
                     <div class="line"></div>
                 </div>
                 <div class="about-text">
                     <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                        sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                        Solo Importamos lo mejor, para complacer tus gustos mas exigentes....
                     </p>
                 </div>
             </div>
@@ -100,7 +103,7 @@
         <div class="row">
             <div class="col">
                 <div class="title3">
-                    <h2 class="title-inner3">Popular products</h2>
+                    <h2 class="title-inner3">Productos Mas Vendidos</h2>
                     <div class="line"></div>
                 </div>
                 <owl-carousel-o [options]="ProductSliderConfig" class="product-5 product-m no-arrow">
@@ -120,13 +123,13 @@
 <!-- product slider end -->
 
 <!-- parallax section start -->
-<section class="full-banner parallax-banner21 parallax small-slider tools-parallax-product" [ngStyle]="{'background-image': 'url(assets/images/parallax/8.jpg)'}">
+<section class="full-banner parallax-banner21 parallax small-slider tools-parallax-product" [ngStyle]="{'background-image': 'url(assets/images/parallax/11.jpg)'}">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-12">
                 <div class="tools-description">
                     <div>
-                        <h3>select your vehical</h3>
+                        <h3>Filtrar</h3>
                         <div class="tools-form">
                             <div class="search-box">
                                 <select class="form-control">
@@ -138,6 +141,8 @@
                                     <option value="5">Skoda</option>
                                 </select>
                             </div>
+                            
+                            <!--
                             <div class="search-box">
                                 <select name="model" class="form-control">
                                     <option value="">Select Model</option>
@@ -153,6 +158,8 @@
                                     <option value="">Select Year</option>
                                 </select>
                             </div>
+
+-->
                             <div class="search-button">
                                 <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'shoes'}" class="btn btn-solid btn-find">find my part</a>
                             </div>

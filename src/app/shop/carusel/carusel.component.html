@@ -1,0 +1,222 @@
+<div class="container my-2">
+<div class="row">
+    <div class="col-md-12">
+       
+
+          <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+            <a class="navbar-brand" href="#">
+                <img src="../../../assets/images/portada/img-10.png" width="90px" height="40px" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"  href=""   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Categorias
+                    </a>
+                    <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </li>    
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Delivery express Frutas <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Carnes y Aves</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link " href="#">Abarrotes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="#">Vinos y Licores</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="#">Limpieza</a>
+                  </li>
+                  
+              </ul>
+              <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="buscar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+              </form>
+            </div>
+          </nav>
+    </div>
+</div>
+</div>
+
+
+
+
+<div class="container my-2">
+<div class="row border border-danger">
+    <div class="col-md-6">
+        <ngb-carousel
+
+    [showNavigationArrows]="true" 
+    [showNavigationIndicators]="true"
+    interval="1000"
+    [keyboard]="true"
+    [pauseOnHover]="true"
+    [wrap]="true"
+    [activeId]="'slideTwo'"
+    
+    >
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="../../../assets/images/portada/img-1.jpg" style="align-content: center;" height="200px" width="500px" alt="Random first slide">
+            </div>
+            <div class="carousel-caption text-danger">
+             
+            </div>
+        </ng-template>
+        <ng-template ngbSlide id="slideTwo">
+            <div class="picsum-img-wrapper">
+                <img src="../../../assets/images/portada/img-2.jpg" height="200px" width="500px" alt="Random first slide">
+            </div>
+            <div class="carousel-caption text-danger">
+              <!--  
+                
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    
+              -->  
+            </div>
+        </ng-template>
+     
+    </ngb-carousel>
+    </div>
+
+    <div class="col-md-6">
+        <ngb-carousel
+
+    [showNavigationArrows]="true" 
+    [showNavigationIndicators]="true"
+    interval="1000"
+    [keyboard]="true"
+    [pauseOnHover]="true"
+    [wrap]="true"
+    [activeId]="'slideTwo'"
+    
+    >
+        <ng-template ngbSlide>
+            <div class="picsum-img-wrapper">
+                <img src="../../../assets/images/portada/img-3.jpg" style="align-content: center;" height="200px" width="500px" alt="Random first slide">
+            </div>
+            <div class="carousel-caption text-danger">
+             
+            </div>
+        </ng-template>
+        <ng-template ngbSlide id="slideTwo">
+            <div class="picsum-img-wrapper">
+                <img src="../../../assets/images/portada/img-4.png" height="200px" width="500px" alt="Random first slide">
+            </div>
+            <div class="carousel-caption text-danger">
+              <!--  
+                
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    
+              -->  
+            </div>
+        </ng-template>
+     
+    </ngb-carousel>
+    </div>
+</div>
+</div>
+
+
+
+<div class="container my-2">
+    <div class="row border border-danger">
+        <div class="col-md-6">
+            <ngb-carousel
+    
+        [showNavigationArrows]="true" 
+        [showNavigationIndicators]="true"
+        interval="1000"
+        [keyboard]="true"
+        [pauseOnHover]="true"
+        [wrap]="true"
+        [activeId]="'slideTwo'"
+        
+        >
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img src="../../../assets/images/portada/img-6.jpg" style="align-content: center;" height="200px" width="500px" alt="Random first slide">
+                </div>
+                <div class="carousel-caption text-danger">
+                 
+                </div>
+            </ng-template>
+            <ng-template ngbSlide id="slideTwo">
+                <div class="picsum-img-wrapper">
+                    <img src="../../../assets/images/portada/img-7.jpg" height="200px" width="500px" alt="Random first slide">
+                </div>
+                <div class="carousel-caption text-danger">
+                  <!--  
+                    
+                    <h3>First slide label</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        
+                  -->  
+                </div>
+            </ng-template>
+         
+        </ngb-carousel>
+        </div>
+    
+        <div class="col-md-6">
+            <ngb-carousel
+    
+        [showNavigationArrows]="true" 
+        [showNavigationIndicators]="true"
+        interval="1000"
+        [keyboard]="true"
+        [pauseOnHover]="true"
+        [wrap]="true"
+        [activeId]="'slideTwo'"
+        
+        >
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img src="../../../assets/images/portada/img-8.jpg" style="align-content: center;" height="200px" width="500px" alt="Random first slide">
+                </div>
+                <div class="carousel-caption text-danger">
+                 
+                </div>
+            </ng-template>
+            <ng-template ngbSlide id="slideTwo">
+                <div class="picsum-img-wrapper">
+                    <img src="../../../assets/images/portada/img-9.jpg" height="200px" width="500px" alt="Random first slide">
+                </div>
+                <div class="carousel-caption text-danger">
+                  <!--  
+                    
+                    <h3>First slide label</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        
+                  -->  
+                </div>
+            </ng-template>
+         
+        </ngb-carousel>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+    <app-footer></app-footer>

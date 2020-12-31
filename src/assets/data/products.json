@@ -81,7 +81,7 @@
                 "image_id": 111,
                 "id": 1,
                 "alt": "yellow",
-                "src": "assets/images/product/fashion/39.jpg",
+                "src": "assets/images/product/prueba/1.jpg",
                 "variant_id": [
                     101,
                     104
@@ -9091,7 +9091,7 @@
         ]
     }, {
         "id": 177,
-        "title": "Wheel Bearing",
+        "title": "Juego de Muebles",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.",
         "type": "tools",
         "brand": "Hyundai",
@@ -9103,7 +9103,7 @@
         "stock": 20,
         "new": true,
         "tags": [
-            "Hyundai"
+            "Muebles Cuero"
         ],
         "variants": [{
             "variant_id": 17701,
@@ -9115,14 +9115,14 @@
             "image_id": 17711,
             "id": 177,
             "alt": "tools",
-            "src": "assets/images/product/tools/1.jpg",
+            "src": "assets/images/product/prueba/2.jpg",
             "variant_id": [
                 17701
             ]
         }]
     }, {
         "id": 178,
-        "title": "cable clutch",
+        "title": "Iphones 10",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.",
         "type": "tools",
         "brand": "chevrolet",
@@ -9134,7 +9134,7 @@
         "stock": 15,
         "new": false,
         "tags": [
-            "chevrolet"
+            "Iphones 10"
         ],
         "variants": [{
             "variant_id": 17801,
@@ -9146,14 +9146,14 @@
             "image_id": 17811,
             "id": 178,
             "alt": "tools",
-            "src": "assets/images/product/tools/2.jpg",
+            "src": "assets/images/product/prueba/1.jpg",
             "variant_id": [
                 17801
             ]
         }]
     }, {
         "id": 179,
-        "title": "cap wheel",
+        "title": "Smart TV LG 4K 2020",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.",
         "type": "tools",
         "brand": "Hyundai",
@@ -9165,7 +9165,7 @@
         "stock": 20,
         "new": false,
         "tags": [
-            "Hyundai"
+            "TV LG 4K 2020"
         ],
         "variants": [{
             "variant_id": 17901,
@@ -9177,14 +9177,14 @@
             "image_id": 17911,
             "id": 179,
             "alt": "tools",
-            "src": "assets/images/product/tools/3.jpg",
+            "src": "assets/images/product/prueba/3.jpg",
             "variant_id": [
                 17901
             ]
         }]
     }, {
         "id": 180,
-        "title": "suspensons",
+        "title": "Dell Computadora",
         "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.",
         "type": "tools",
         "brand": "fiat",
@@ -9196,7 +9196,7 @@
         "stock": 5,
         "new": true,
         "tags": [
-            "fiat"
+            "Computador Desktop"
         ],
         "variants": [{
             "variant_id": 18001,
@@ -9208,7 +9208,7 @@
             "image_id": 18011,
             "id": 180,
             "alt": "tools",
-            "src": "assets/images/product/tools/4.jpg",
+            "src": "assets/images/product/prueba/4.jpg",
             "variant_id": [
                 18001
             ]

@@ -23,6 +23,7 @@ import 'hammerjs';
 import 'mousetrap';
 import { LoginComponent } from './auth/login/login.component';
 import { environment } from 'src/environments/environment';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent
   ],
   imports: [
+    NgImageSliderModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     HttpClientModule,

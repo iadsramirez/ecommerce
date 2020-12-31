@@ -35,25 +35,25 @@ export class ToolsComponent implements OnInit, OnDestroy {
 
   // services
   public categories = [{
-    image: 'assets/images/categories/6.jpg',
-    title: 'auto parts',
-    text:  this._sanitizer.bypassSecurityTrustHtml('<li><a href="#">Shock-resistant parts</a></li><li><a href="#">Skeleton parts</a></li><li><a href="#">Slow parts</a></li><li><a href="#">Solar-powered parts</a></li>'),
+    image: 'assets/images/categories/14.jpg',
+    title: 'Comida',
+    text:  this._sanitizer.bypassSecurityTrustHtml('<li><a href="#">Carnes Importadas</a></li><li><a href="#">Verduras Frescas</a></li><li><a href="#">Semillas Importadas</a></li><li><a href="#">Comida Baja en Grasa</a></li>'),
   }, {
-    image: 'assets/images/categories/7.jpg',
-    title: 'brakes & steering',
-    text:  this._sanitizer.bypassSecurityTrustHtml('<li><a href="#">Shock-resistant parts</a></li><li><a href="#">Skeleton parts</a></li><li><a href="#">Slow parts</a></li><li><a href="#">Solar-powered parts</a></li>'),
+    image: 'assets/images/categories/15.jpg',
+    title: 'Vinos y mas',
+    text:  this._sanitizer.bypassSecurityTrustHtml('<li><a href="#">Vinos Importados</a></li><li><a href="#">Wishky</a></li><li><a href="#">Vodka</a></li><li><a href="#">Tequila Importada</a></li>'),
   }, {
-    image: 'assets/images/categories/8.jpg',
-    title: 'engine & drivetrain',
-    text:  this._sanitizer.bypassSecurityTrustHtml('<li><a href="#">Shock-resistant parts</a></li><li><a href="#">Skeleton parts</a></li><li><a href="#">Slow parts</a></li><li><a href="#">Solar-powered parts</a></li>'),
+    image: 'assets/images/categories/16.jpg',
+    title: 'Ropa Importada',
+    text:  this._sanitizer.bypassSecurityTrustHtml('<li><a href="#">Ropa Dama</a></li><li><a href="#">Ropa Caballero</a></li><li><a href="#">Ropa para Niño</a></li><li><a href="#">Ropa para Niña</a></li>'),
   }, {
-    image: 'assets/images/categories/9.jpg',
-    title: 'exterior accesories',
-    text:  this._sanitizer.bypassSecurityTrustHtml('<li><a href="#">Shock-resistant parts</a></li><li><a href="#">Skeleton parts</a></li><li><a href="#">Slow parts</a></li><li><a href="#">Solar-powered parts</a></li>'),
+    image: 'assets/images/categories/17.jpg',
+    title: 'Hogar',
+    text:  this._sanitizer.bypassSecurityTrustHtml('<li><a href="#">Refrigeradores</a></li><li><a href="#">TV Smart</a></li><li><a href="#">Equipo de Sonido</a></li><li><a href="#">Cocinas/Micro Ondas</a></li>'),
   }, {
-    image: 'assets/images/categories/10.jpg',
-    title: 'other parts',
-    text:  this._sanitizer.bypassSecurityTrustHtml('<li><a href="#">Shock-resistant parts</a></li><li><a href="#">Skeleton parts</a></li><li><a href="#">Slow parts</a></li><li><a href="#">Solar-powered parts</a></li>'),
+    image: 'assets/images/categories/18.jpg',
+    title: 'Tecnologia',
+    text:  this._sanitizer.bypassSecurityTrustHtml('<li><a href="#">Smart Phones</a></li><li><a href="#">Computadoras</a></li><li><a href="#">Tablet</a></li><li><a href="#">Iphones</a></li>'),
   }]
 
   // Logo
