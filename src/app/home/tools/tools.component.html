@@ -185,7 +185,7 @@
 <!-- parallax section end -->
 
 <!-- product section start -->
-<section class="tools_product">
+<section class="tools_product" *ngIf="false">
     <div class="container">
         <div class="row multiple-slider">
             <div class="col-xl-3 col-lg-4 col-md-12">
@@ -220,7 +220,7 @@
 <!-- product section end -->
 
 <!--  logo section start-->
-<section class="section-b-space tools-brand">
+<section class="section-b-space tools-brand" *ngIf="false">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -232,5 +232,5 @@
 <!--  logo section End-->
 
 <!-- Cart Open To Top Side-->
-<app-cart-variation [direction]="'top'"></app-cart-variation>
+<app-cart-variation [direction]="'top'" ></app-cart-variation>
 <app-footer-one [class]="'sticky-footer'" [newsletter]="false" [themeLogo]="themeLogo"></app-footer-one>

@@ -56,8 +56,13 @@ export class CheckoutComponent implements OnInit {
     return this.productService.cartTotalCantidad();
   }
 
+llamadaApi(){
+  this.orderService.probarPedido(this.products, this.checkoutForm.value, 1, this.amount);
+}
 
-  // Stripe Payment Gateway
+
+      
+  // Stripe Payment Gateway esta se llama originalmente
   stripeCheckout() {
     var handler = (<any>window).StripeCheckout.configure({
       key: environment.stripe_token, // publishble key
@@ -69,8 +74,8 @@ export class CheckoutComponent implements OnInit {
       }
     });
     handler.open({
-      name: 'Multikart',
-      description: 'Online Fashion Store',
+      name: 'Pedido',
+      description: 'Confirmado Con Exito!!',
       amount: this.amount * 100
     }) 
   }

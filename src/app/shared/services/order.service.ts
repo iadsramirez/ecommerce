@@ -35,5 +35,22 @@ export class OrderService {
     localStorage.removeItem("cartItems");
     this.router.navigate(['/shop/checkout/success', orderId]);
   }
+
+
+public probarPedido(product: any, details: any, orderId: any, amount: any){
+  var item = {
+    shippingDetails: details,
+    product: product,
+    orderId: orderId,
+    totalAmount: amount
+};
+state.checkoutItems = item;
+localStorage.setItem("checkoutItems", JSON.stringify(item));
+localStorage.removeItem("cartItems");
+  this.router.navigate(['/shop/checkout/success', orderId]);
+}
+
+
+
   
 }

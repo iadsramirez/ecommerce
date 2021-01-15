@@ -2,7 +2,7 @@
     <a href="javascript:void(0)" class="overlay" (click)="closeCart()"></a>
     <div class="cart-inner">
         <div class="cart_top">
-            <h3>my cart</h3>
+            <h3>mi Carrito</h3>
             <div class="close-cart" (click)="closeCart()">
                 <a href="javascript:void(0)">
                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -54,7 +54,7 @@
         </div>
         <div class="col-sm-12 empty-cart-cls text-left" *ngIf="!products.length">
             <h4 class="mt-3">
-              <strong>Your Cart is Empty</strong>
+              <strong>Carrito limpio</strong>
             </h4>
             <a [routerLink]="['/shop/collection/left/sidebar']" class="btn btn-solid">continue shopping</a>
         </div>

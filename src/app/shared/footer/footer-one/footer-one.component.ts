@@ -18,4 +18,6 @@ export class FooterOneComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+
 }

@@ -15,13 +15,7 @@ export class SettingsComponent implements OnInit {
   public products: Product[] = []
   
   public languages = [{ 
-    name: 'English',
-    code: 'en'
-  }, {
-    name: 'French',
-    code: 'fr'
-  }, {
-    name: 'Spanish',
+    name: 'Español',
     code: 'es'
   }
 
@@ -29,21 +23,9 @@ export class SettingsComponent implements OnInit {
 ];
 
   public currencies = [{
-    name: 'Euro',
-    currency: 'EUR',
+    name: 'SOLES',
+    currency: '	S/',
     price: 0.90 // price of euro
-  }, {
-    name: 'Rupees',
-    currency: 'INR',
-    price: 70.93 // price of inr
-  }, {
-    name: 'Pound',
-    currency: 'GBP',
-    price: 0.78 // price of euro
-  }, {
-    name: 'Dollar',
-    currency: 'USD',
-    price: 1 // price of usd
   }]
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,

@@ -72,14 +72,10 @@
 
   </div>
   <div class="product-detail">
+    
     <div>
-
- 
-      <bar-rating [rate]="5" [readOnly]="true"></bar-rating>
-
-
-      <a [routerLink]="['/shop/product/left/sidebar/', productoObj?.nombre.replace(' ', '-')]">
-        <h6>{{ productoObj?.nombre | titlecase }}</h6>
+      <a [routerLink]="['/shop/product/left/sidebar/', productoObj?.nombre.replace(' ', '-')]"><br />
+        <h6>{{ productoObj?.nombre | titlecase }}</h6><br />
       </a>
       <p>{{ productoObj?.descripcion }}</p>
 
@@ -87,9 +83,9 @@
       <h6>
         {{productoObj?.descripcion}}<br />
         {{ productoObj?.marcas.nombre}}<br />
-        {{ productoObj?.precio * currency?.price  | currency:currency?.currency:'symbol' }}
+        {{ productoObj?.precio * currency?.price | currency:'S./' }}
         <del *ngIf="false"><span class="money">
-            {{ productoObj?.precio * currency?.price | currency:currency?.currency:'symbol' }}</span></del>
+            {{ productoObj?.precio * currency?.price}}S./</span></del>
       </h6>
 
       
