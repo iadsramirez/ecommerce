@@ -56,14 +56,14 @@ export class NavService {
 				{ path: '/home/marijuana', title: 'marijuana', type: 'link' }
 			]
 		},
-		{
+	/*	{
 			title: 'Tienda', type: 'sub', active: false, children: [
 				{ path: '/shop/collection/left/sidebar', title: 'left-sidebar', type: 'link' },
 				{ path: '/shop/collection/right/sidebar', title: 'right-sidebar', type: 'link' },
 				{ path: '/shop/collection/no/sidebar', title: 'no-sidebar', type: 'link' }
 			]
-		},
-		{
+		},*/
+	/*	{
 			title: 'Productos', type: 'sub', active: false, children: [
 				{
 					title: 'Menu lateral', type: 'sub', active: false, children: [
@@ -77,8 +77,8 @@ export class NavService {
 				{ path: '/shop/product/bundle/trim-dress', title: 'bundle-product', type: 'link' },
 				{ path: '/shop/product/image/outside/trim-dress', title: 'image-outside', type: 'link' }
 			]
-		},
-		{
+		},*/
+		/*{
 			title: 'Propiedades', type: 'sub', megaMenu: true, badge: true, badgeText: 'new', active: false, children: [
 				{
 					title: 'portfolio', type: 'sub', active: false, children: [
@@ -118,7 +118,7 @@ export class NavService {
 					]
 				},
 				{
-					title: 'email-template', type: 'sub', active: false, children: [
+					title: 'email-template', type: 'sub', active: false, children: [{}
 						{ path: 'http://themes.pixelstrap.com/multikart/front-end/email-order-success.html', title: 'order-success', type: 'extTabLink' },
 						{ path: 'http://themes.pixelstrap.com/multikart/front-end/email-order-success-two.html', title: 'order-success-2', type: 'extTabLink' },
 						{ path: 'http://themes.pixelstrap.com/multikart/front-end/email-template.html', title: 'email-template', type: 'extTabLink' },
@@ -126,10 +126,10 @@ export class NavService {
 					]
 				}
 			]
-		},
+		},*/
 		{
-			title: 'paginas', type: 'sub', active: false, children: [
-				{
+			title: 'Cuenta', type: 'sub', active: false, children: [
+				/*{
 					title: 'cuenta', type: 'sub', active: false, children: [
 						{ path: '/pages/wishlist', title: 'lista de deseos', type: 'link' },
 						{ path: '/pages/cart', title: 'cart', type: 'link' },
@@ -141,33 +141,34 @@ export class NavService {
 						{ path: '/pages/profile', title: 'perfil', type: 'link' },
 						{ path: '/pages/checkout', title: 'revisar', type: 'link' },
 					]
-				},
+				},*/
 				{ path: '/pages/aboutus', title: 'sobre nosotros', type: 'link' },
-				{ path: '/pages/search', title: 'buscar', type: 'link' },
-				{ path: '/pages/typography', title: 'tipografía', type: 'link', badge: true, badgeText: 'new' },
+				/*{ path: '/pages/search', title: 'buscar', type: 'link' },
+				/*{ path: '/pages/typography', title: 'tipografía', type: 'link', badge: true, badgeText: 'new' },
 				{ path: '/pages/review', title: 'revisar', type: 'link', badge: true, badgeText: 'new' },
 				{ path: '/pages/order/success', title: 'orden  éxitosas', type: 'link' },
-					{ 
+					/*{ 
 						title: 'comparar', type: 'sub', active: false, children: [
 							{ path: '/pages/compare/one', title: 'compare-1', type: 'link' },
 							{ path: '/pages/compare/two', title: 'compare-2', type: 'link', badge: true, badgeText: 'new' }
 						]
-					},
-				{ path: '/pages/collection', title: 'colección', type: 'link' },
+					},*/
+			/*	{ path: '/pages/collection', title: 'colección', type: 'link' },
 				{ path: '/pages/lookbook', title: 'lookbook', type: 'link' },
 				{ path: '/pages/404', title: '404', type: 'link' },
 				{ path: '/pages/comingsoon', title: 'próximamente', type: 'link', badge: true, badgeText: 'new' },
-				{ path: '/pages/faq', title: 'preguntas', type: 'link' }
+				{ path: '/pages/faq', title: 'preguntas', type: 'link' }*/
 			]
 		},
-		{
+		
+	/*	{
 			title: 'blogs', type: 'sub', active: false, children: [
 				{ path: '/pages/blog/left/sidebar', title: 'left-sidebar', type: 'link' },
 				{ path: '/pages/blog/right/sidebar', title: 'right-sidebar', type: 'link' },
 				{ path: '/pages/blog/no/sidebar', title: 'no-sidebar', type: 'link' },
 				{ path: '/pages/blog/details', title: 'blog-details', type: 'link' }
 			]
-		}
+		}*/
 	];
 
 	LEFTMENUITEMS: Menu[] = [
