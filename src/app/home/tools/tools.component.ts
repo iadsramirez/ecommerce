@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { HomeSlider, ProductSlider } from '../../shared/data/slider';
 import { Product } from '../../shared/classes/product';
 import { ProductService } from '../../shared/services/product.service';
+import {CategoriaProd} from '../../modelo/CategoriaProd';
 
 @Component({
   selector: 'app-tools',
@@ -15,9 +16,25 @@ export class ToolsComponent implements OnInit, OnDestroy {
   
   public products: Product[] = [];
   public productCollections: any[] = [];
+  listaCategoriaTemp:Array<any>=[];
+  public listaCategoria:Array<any>=[];
 
   constructor(private _sanitizer:DomSanitizer,
     public productService: ProductService) {
+
+     this.productService.obtenerCategorias().subscribe(
+       catego=>{
+         this.listaCategoriaTemp=catego;
+         this.listaCategoriaTemp.forEach(elemento=>{
+           let categoriProd=new CategoriaProd();
+           categoriProd.image=elemento.url;
+           categoriProd.title=elemento.nombre;
+           this.listaCategoria.push(categoriProd);
+         });
+       }
+     ); 
+
+
     this.productService.getProducts.subscribe(response => {
       this.products = response.filter(item => item.type == 'tools');
       // Get Product Collection

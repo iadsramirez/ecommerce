@@ -25,8 +25,10 @@ export class ProductService {
   public Products;
   public ProductosObjeto;
   private baseUrl = "http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.producto";
-
-
+  private baseUrlOrden ="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.orden/";
+  private baseUrlUbi ="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.ubigeo/"
+  private baseUrlCat="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio/categorias";
+  private baseUrlComercio="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio/comerciosPorAfiliado/1/1";
 
   constructor(private http: HttpClient,
     private toastrService: ToastrService) { }
@@ -40,7 +42,31 @@ export class ProductService {
 
   //////////////////////////////////////////////////////////
 
+  obtenerComercio():Observable<any>{
+    return this.http.get(this.baseUrlComercio);
+  }
 
+  obtenerCategorias():Observable<any>{
+    return this.http.get(this.baseUrlCat);
+  }
+
+  obtenerDepartamento():Observable<any>{
+    return this.http.get(this.baseUrlUbi+'departamento');
+  }
+
+
+  obtenerProvincia(parametro:any):Observable<any>{
+    return this.http.get(this.baseUrlUbi+'provincia/'+`${parametro}`);
+  }
+
+
+  obtenerDistrito(parametro:any):Observable<any>{
+    return this.http.get(this.baseUrlUbi+'distrito/'+`${parametro}`);
+  }
+
+  guardarPedido(objeto:any):Observable<any>{
+    return this.http.post(this.baseUrlOrden+'crearOrden',objeto);
+  }
 
 
 

@@ -24,6 +24,7 @@ import 'mousetrap';
 import { LoginComponent } from './auth/login/login.component';
 import { environment } from 'src/environments/environment';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,7 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ElementsComponent,
     LoginComponent
   ],
-  imports: [
+  imports: [NgSelectModule,
     NgImageSliderModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,

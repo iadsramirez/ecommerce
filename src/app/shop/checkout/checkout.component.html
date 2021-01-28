@@ -54,45 +54,53 @@
                                     <div class="field-label">Pais</div>
                                     <select name="country" [formControl]="checkoutForm.controls['country']">
                                         <option value="" selected>Seleccione</option>
-                                        <option value="India">India</option>
-                                        <option value="USA">USA</option>
-                                        <option value="Australia">Australia</option>
+                                        <option value="India">Peru</option>
                                     </select>
                                     <div *ngIf="checkoutForm.controls.country.touched && checkoutForm.controls.country.errors?.required" class="text text-danger">
-                                     Country is required
+                                     Pais es requerido
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                     <div class="field-label">Direccion</div>
                                     <input type="text" name="address" [formControl]="checkoutForm.controls['address']" value="" placeholder="" autocomplete="off">
                                     <div *ngIf="checkoutForm.controls.address.touched && checkoutForm.controls.address.errors?.required" class="text text-danger">
-                                     Address is required
+                                     Direccion es requerido
                                     </div>
                                     <div *ngIf="checkoutForm.controls.address.touched && checkoutForm.controls.address.errors?.maxlength" class="text text-danger">
-                                      Maximum 50 character
+                                      Maximo 50 caracteres
                                     </div>
                                 </div>
                                 <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                    <div class="field-label">Ciudad</div>
-                                    <input type="text" name="town" [formControl]="checkoutForm.controls['town']" value="" placeholder="" autocomplete="off">
-                                     <div *ngIf="checkoutForm.controls.town.touched && checkoutForm.controls.town.errors?.required" class="text text-danger">
-                                     City is required
-                                    </div>
+                                    <div class="field-label">Departamento</div>
+                                 <select  
+                                 (change)="llenarProvincia($event.target.value)" 
+                                 (change)="llenarDistrito($event.target.value)" 
+                                 [formControl]="checkoutForm.controls['departamento']" >
+                                       <option *ngFor="let ownerLevel of listaDepartamentos" [value]="ownerLevel.ubigeoDepa">{{ownerLevel.ubigeoDepa}}</option>
+                                 </select>
+                                   
                                 </div>
-                                <div class="form-group col-md-12 col-sm-6 col-xs-12">
-                                    <div class="field-label">Estado</div>
-                                    <input type="text" name="state" [formControl]="checkoutForm.controls['state']" value="" placeholder="" autocomplete="off">
-                                     <div *ngIf="checkoutForm.controls.state.touched && checkoutForm.controls.state.errors?.required" class="text text-danger">
-                                     State is required
-                                    </div>
+
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <div class="field-label">Provincia</div>
+                                 <select  [formControl]="checkoutForm.controls['provincia']" >
+                                       <option *ngFor="let prov of listaProvincia" [value]="prov.ubigeoProv">{{prov.ubigeoProv}}</option>
+                                 </select>
+                                   
                                 </div>
-                                <div class="form-group col-md-12 col-sm-6 col-xs-12">
-                                    <div class="field-label">Codigo Postal</div>
-                                    <input type="text" name="postalcode" [formControl]="checkoutForm.controls['postalcode']" value="" placeholder="" autocomplete="off">
-                                    <div *ngIf="checkoutForm.controls.postalcode.touched && checkoutForm.controls.postalcode.errors?.required" class="text text-danger">
-                                     Postalcode is required
-                                    </div>
+                                
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                    <div class="field-label">Distrito</div>
+                                 <select  [formControl]="checkoutForm.controls['distrito']" >
+                                       <option *ngFor="let dist of listaDistrito" [value]="dist.idUbigeo">{{dist.ubigeoDist}}</option>
+                                 </select>
+                                   
                                 </div>
+
+
+
+
+                             
                             </div>
                           <div class="row " *ngIf="false" >
                             <div class="col-12">

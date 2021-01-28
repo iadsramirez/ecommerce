@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-footer-one',
@@ -13,7 +14,17 @@ export class FooterOneComponent implements OnInit {
 
   public today: number = Date.now();
 
-  constructor() { }
+  comercio:any;
+
+  constructor(private productoService:ProductService) {
+
+    this.productoService.obtenerComercio().subscribe(
+      comercios=>{
+        this.comercio=comercios;
+      }
+    );
+
+   }
 
   ngOnInit(): void {
   }

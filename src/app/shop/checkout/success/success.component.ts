@@ -16,7 +16,16 @@ export class SuccessComponent implements OnInit, AfterViewInit{
     private orderService: OrderService) { }
 
   ngOnInit(): void {	
-    this.orderService.checkoutItems.subscribe(response => this.orderDetails = response);
+    this.orderDetails =JSON.parse(localStorage.getItem('checkoutItems'));
+
+    console.log('Metodo normal'+JSON.parse(localStorage.getItem('checkoutItems')) );
+  /*  this.orderService.checkoutItems.subscribe(response =>{
+      this.orderDetails = response;
+      console.log('Lo que viene de:'+JSON.stringify(response));
+    } );
+
+*/
+
   }
 
   ngAfterViewInit() {

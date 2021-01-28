@@ -1,17 +1,18 @@
 <!--footer section -->
-<footer [class]="class">
+<footer [class]="class" *ngFor="let comercioInfo of comercio">
 	<div class="light-layout" *ngIf="newsletter">
 		<div class="container">
 			<section class="small-section border-section border-top-0">
 				<div class="row">
-					<div class="col-lg-6">
+					<div class="col-lg-12">
 						<div class="subscribe">
 							<div>
-								<h4>KNOW IT ALL FIRST!</h4>
-								<p>Never Miss Anything From Multikart By Signing Up To Our Newsletter. </p>
+								<h4>{{comercioInfo.nombre}}</h4>
+								<p>TELEFONO:{{comercioInfo.telefono}} </p>
 							</div>
 						</div>
 					</div>
+					<!--
 					<div class="col-lg-6">
 						<form class="form-inline subscribe-form" action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda" target="_blank" method="post">
 							<div class="form-group mx-sm-3">
@@ -20,6 +21,8 @@
 							<button type="submit" class="btn btn-solid">subscribe</button>
 						</form>
 					</div>
+					-->
+
 				</div>
 			</section>
 		</div>
@@ -27,15 +30,15 @@
 	<section class="section-b-space light-layout">
 		<div class="container">
 			<div class="row footer-theme partition-f">
-				<div class="col-lg-4 col-md-6">
+				<div class="col-lg-4 col-md-12">
 					<div class="footer-title footer-mobile-title">
-						<h4>about</h4>
+						<h4>Acerca de </h4>
 					</div>
 					<div class="footer-contant">
-						<div class="footer-logo">
-							<img [src]="themeLogo" alt="logo">
+						<div class="footer-logo" *ngIf="false">
+							<img [src]="themeLogo" alt="logo" width="850px" height="180px">
 						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
+						<p>{{comercioInfo.direccion}} </p>
 						<div class="footer-social">
                             <ul>
                                 <li>
@@ -57,6 +60,8 @@
                         </div>
 					</div>
 				</div>
+
+				<!--
 				<div class="col offset-xl-1">
 					<div class="sub-title">
 						<div class="footer-title">
@@ -104,6 +109,8 @@
 						</div>
 					</div>
 				</div>
+				-->
+
 			</div>
 		</div>
 	</section>

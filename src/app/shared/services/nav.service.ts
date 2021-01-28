@@ -33,7 +33,7 @@ export class NavService {
 	}
 
 	MENUITEMS: Menu[] = [
-		{
+		/*{
 			title: 'Inicio', type: 'sub', active: false, children: [
 				{
 					title: 'ropa', type: 'sub', active: false, children: [
@@ -55,7 +55,7 @@ export class NavService {
 				{ path: '/home/bags', title: 'pantalones', type: 'link' },
 				{ path: '/home/marijuana', title: 'marijuana', type: 'link' }
 			]
-		},
+		},*/
 	/*	{
 			title: 'Tienda', type: 'sub', active: false, children: [
 				{ path: '/shop/collection/left/sidebar', title: 'left-sidebar', type: 'link' },

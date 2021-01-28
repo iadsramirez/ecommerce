@@ -10,7 +10,7 @@
                 <div class="error-section">
                     <h1>404</h1>
                     <h2>page not found</h2>
-                    <a [routerLink]="'/home/fashion'" class="btn btn-solid">back to home</a>
+                    <a [routerLink]="'/shop/collection/left/sidebar'" class="btn btn-solid">back to home</a>
                 </div>
             </div>
         </div>
@@ -44,24 +44,24 @@
                     <h3>Detalles de la orden</h3>
                     <div class="row product-order-detail" *ngFor="let product of orderDetails.product">
                         <div class="col-3">
-                            <img [src]="product.images[0].src" alt="" class="img-fluid">
+                            <img [src]="product.url" alt="" class="img-fluid">
                         </div>
                         <div class="col-3 order_detail">
                             <div>
-                                <h4>product name</h4>
-                                <h5>{{ product.title }}</h5>
+                                <h4>Producto</h4>
+                                <h5>{{ product.nombre }}</h5>
                             </div>
                         </div>
                         <div class="col-3 order_detail">
                             <div>
-                                <h4>quantity</h4>
-                                <h5>{{ product.quantity }}</h5>
+                                <h4>Cantidad</h4>
+                                <h5>{{ product.cantidad }}</h5>
                             </div>
                         </div>
                         <div class="col-3 order_detail">
                             <div>
-                                <h4>price</h4>
-                                <h5>{{ product?.price * productService?.Currency?.price | discount:product | currency:productService?.Currency.currency:'symbol' }}</h5>
+                                <h4>Precio</h4>
+                                <h5>{{ product.precio}}</h5>
                             </div>
                         </div>
                     </div>
@@ -99,12 +99,12 @@
 
                     <div class="col-sm-12 payment-mode">
                         <h4>Metodo de Pago</h4>
-                        <p>Pay on Delivery (Cash/Card). Cash on delivery (COD) available. Card/Net banking acceptance subject to device availability.</p>
+                        <p>Efectivo</p>
                     </div>
                     <div class="col-md-12">
                         <div class="delivery-sec">
-                            <h3>expected date of delivery</h3>
-                            <h2>March 21, 2021</h2>
+                            <h3></h3>
+                            <h2></h2>
                         </div>
                     </div>
                 </div>

@@ -29,6 +29,7 @@
     "@angular/router": "~10.0.3",
     "@ks89/angular-modal-gallery": "^7.2.5",
     "@ng-bootstrap/ng-bootstrap": "^6.2.0",
+    "@ng-select/ng-select": "^5.1.0",
     "@ngneat/content-loader": "^4.1.0",
     "@nguniversal/express-engine": "^9.0.1",
     "@nguniversal/module-map-ngfactory-loader": "^8.2.6",

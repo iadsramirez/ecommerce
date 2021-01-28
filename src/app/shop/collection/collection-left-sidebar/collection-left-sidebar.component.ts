@@ -77,8 +77,8 @@ export class CollectionLeftSidebarComponent implements OnInit {
 
       (response:IProducto[]) => {
         this.productosObjeto = response;
-        console.log('OM');
-        console.log(response);
+        //console.log('OM');
+        //console.log(response);
       }
     )
 
