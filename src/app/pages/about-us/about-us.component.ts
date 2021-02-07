@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamSlider, TestimonialSlider } from '../../shared/data/slider';
 import { AuthService } from 'src/app/servicios/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about-us',
@@ -13,7 +14,7 @@ import { AuthService } from 'src/app/servicios/auth.service';
 export class AboutUsComponent implements OnInit {
 
   proveedor:any;
-  constructor(private auth:AuthService) {
+  constructor(private auth:AuthService,private router: Router) {
 
   auth.obtenerProveedor().subscribe(
     data=>{
@@ -27,6 +28,16 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+  redireccionar(nombre:any,imagen:any){
+    localStorage.setItem('comercio', nombre);
+    localStorage.setItem('comercioImg', imagen);
+
+    this.router.navigateByUrl('/home/tools');
+  }
+
+
 
   public TeamSliderConfig: any = TeamSlider;
   public TestimonialSliderConfig: any = TestimonialSlider;

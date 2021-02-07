@@ -21,6 +21,7 @@ export class AuthService {
   public user: User;
   public mensaje: string;
   baseurl:string=`http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.`;
+  baseUrlComercio:string=`http://localhost:8080/ecommerce/webresources/com.ecommerce.entidades.comercio`;
 
 
   constructor(public afAuth: AngularFireAuth, private router: Router, private http: HttpClient) { }

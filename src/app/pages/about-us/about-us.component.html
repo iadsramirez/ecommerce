@@ -29,7 +29,7 @@
                 <owl-carousel-o class="slide-2 testimonial-slider no-arrow" [options]="TestimonialSliderConfig">
                     <ng-container *ngFor="let ts of proveedor">
                       <ng-template carouselSlide>
-                          <div>
+                          <div (click)="redireccionar(ts.nombre,ts.url);">
                             <div class="media">
                                 <div class="text-center">
                                     <img src="assets/images/testimonial/3.jpg" alt="image">

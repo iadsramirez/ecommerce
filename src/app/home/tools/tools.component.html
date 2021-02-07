@@ -12,7 +12,7 @@
                                 <div>
                                     <h4>Bienvenidos</h4>
                                     <h1>Mi Bodeguita</h1>
-                                    <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'tools'}" class="btn btn-solid">shop now</a>
+                                    <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'tools'}" class="btn btn-solid">Comprar Ahora</a>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                                 <div>
                                     <h4>Ahorra Comprando</h4>
                                     <h1>Mi Bodeguita</h1>
-                                    <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'tools'}" class="btn btn-solid">shop now</a>
+                                    <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'tools'}" class="btn btn-solid">Comprar Ahora</a>
                                 </div>
                             </div>
                         </div>
@@ -55,6 +55,7 @@
 <!-- Home slider End -->
 
 <!-- service section start -->
+<!-- service section start -->
 <section class="banner-padding absolute-banner pb-0 tools-service">
     <div class="container absolute-bg">
         <div class="service p-0 ">
@@ -62,6 +63,7 @@
         </div>
     </div>
 </section>
+<!-- service section end -->
 <!-- service section end -->
 
 <!-- about section start-->
@@ -98,7 +100,7 @@
 <!-- category end -->
 
 <!-- product slider start -->
-<section class="section-b-space tools-grey">
+<section class="section-b-space tools-grey" *ngIf="false">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -123,7 +125,7 @@
 <!-- product slider end -->
 
 <!-- parallax section start -->
-<section class="full-banner parallax-banner21 parallax small-slider tools-parallax-product" [ngStyle]="{'background-image': 'url(assets/images/parallax/11.jpg)'}">
+<section *ngIf="false" class="full-banner parallax-banner21 parallax small-slider tools-parallax-product" [ngStyle]="{'background-image': 'url(assets/images/parallax/11.jpg)'}">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-12">
@@ -233,3 +235,5 @@
 
 <!-- Cart Open To Top Side-->
 <app-cart-variation [direction]="'top'" ></app-cart-variation>
+
+<app-footer-four></app-footer-four>
