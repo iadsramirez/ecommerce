@@ -6,4 +6,5 @@ export interface Order {
     product?: Product;
     orderId?: any;
     totalAmount?: any;
+    totalCompra?:any;
 }

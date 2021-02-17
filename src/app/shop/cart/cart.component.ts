@@ -31,7 +31,7 @@ export class CartComponent implements OnInit {
 
 
   public get getTotalIproducto(): Observable<number> {
-    return this.productService.cartTotalCantidad();
+    return this.productService.cartTotalCantidadSubTotal();
   }
 
 

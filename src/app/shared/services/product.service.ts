@@ -20,6 +20,7 @@ const state = {
 })
 export class ProductService {
 
+  public totalCompra:number;
   public Currency = { name: 'Dollar', currency: 'USD', price: 1 } // Default Currency
   public OpenCart: boolean = false;
   public Products;
@@ -29,6 +30,7 @@ export class ProductService {
   private baseUrlUbi ="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.ubigeo/"
   private baseUrlCat="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio/categorias";
   private baseUrlComercio="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio/comerciosPorAfiliado/1/1";
+  private basUrlImagenBanner:string='http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.promocion';
 
   constructor(private http: HttpClient,
     private toastrService: ToastrService) { }
@@ -41,6 +43,15 @@ export class ProductService {
   */
 
   //////////////////////////////////////////////////////////
+
+  obtenerImagenBanner():Observable<any>{
+    return this.http.get('http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.promocion/');
+  }
+
+
+  obtenerConsumo():Observable<any>{
+    return this.http.get(`http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio/`);
+  }
 
   obtenerComercio():Observable<any>{
     return this.http.get(this.baseUrlComercio);
@@ -398,15 +409,59 @@ public removeCartItemIProducto(product: IProducto): any {
 
  // Cantidad Total
  public cartTotalCantidad(): Observable<number> {
+  /*let consumo:any={valor:0.1};
+  if(JSON.parse(localStorage.getItem('consumoComercio'))){
+    consumo=JSON.parse(localStorage.getItem('consumoComercio'));
+  }*/
+
+ // console.log('consumo desde el api de producto:'+JSON.stringify(consumo));
   return this.cartItemsIproducto.pipe(map((product: IProducto[]) => {
+
+    this.totalCompra= product.reduce((prev, curr: IProducto) => {
+      let price = curr.precio;
+      return (prev+ price )* curr.cantidad * this.Currency.price;
+    }, 0);
+
+
     return product.reduce((prev, curr: IProducto) => {
       let price = curr.precio;
-      
-      return (prev + price * curr.cantidad) * this.Currency.price;
+      return (prev+ price )* curr.cantidad * this.Currency.price;
     }, 0);
   }));
 }
 
+
+public obtenerCostoEnvio():number {
+  let consumo:any={valor:0.1};
+  if(JSON.parse(localStorage.getItem('consumoComercio'))){
+    consumo=JSON.parse(localStorage.getItem('consumoComercio'));
+  }
+  return Number(consumo.valor);
+}
+
+
+public getCantida():number{
+
+  this.cartTotalCantidad();
+
+  let consumo:any={valor:0.1};
+  if(JSON.parse(localStorage.getItem('consumoComercio'))){
+    consumo=JSON.parse(localStorage.getItem('consumoComercio'));
+  }
+
+  return this.totalCompra+Number(consumo.valor);
+}
+
+public cartTotalCantidadSubTotal(): Observable<number> {
+  let consumo:any=JSON.parse(localStorage.getItem('consumoComercio'));
+  console.log('consumo desde el api de producto:'+JSON.stringify(consumo));
+  return this.cartItemsIproducto.pipe(map((product: IProducto[]) => {
+    return product.reduce((prev, curr: IProducto) => {
+      let price = curr.precio;
+      return (prev+ price )* curr.cantidad * this.Currency.price;
+    }, 0);
+  }));
+}
 
 
 
@@ -535,6 +590,13 @@ public removeCartItemIProducto(product: IProducto): any {
       pages: pages
     };
   }
+
+
+
+
+
+
+  
 
 
 

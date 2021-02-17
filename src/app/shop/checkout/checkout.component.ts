@@ -31,7 +31,8 @@ export class CheckoutComponent implements OnInit {
    listaDepartamentos:any;
    listaProvincia:any;
    listaDistrito:any;
-
+   valorConsumo:number;
+   consumo:number;
 
 
   constructor(private router: Router,private fb: FormBuilder,
@@ -54,6 +55,26 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  
+   
+
+  this.productService.obtenerConsumo().subscribe(
+    
+    
+    valor=>{
+      
+      this.valorConsumo=valor[0].consumoMinimo;
+
+      const consumirs = {} as Consumir;
+      consumirs.valor=valor[0].consumoMinimo;
+      localStorage.setItem('consumoComercio', JSON.stringify(consumirs));
+      this.consumo=Number(consumirs.valor);
+    }
+  );
+
+
+  console.log('valor del consumo de mierdAa'+this.consumo);
+   
     this.productService.cartItems.subscribe(response => this.products = response);
     this.getTotal.subscribe(amount => this.amount = amount);
     this.productService.cartItemsIproducto.subscribe(response => this.productoObj = response);
@@ -83,6 +104,15 @@ export class CheckoutComponent implements OnInit {
     return this.productService.cartTotalCantidad();
   }
 
+  public get totalNuevo():number{
+    return this.productService.getCantida();
+  }
+
+
+  public get getSubTotalProducto():Observable<number>{
+    return this.productService.cartTotalCantidadSubTotal();
+  }
+
 
 
   llenarProvincia(param:any){
@@ -105,6 +135,7 @@ export class CheckoutComponent implements OnInit {
 }
 
 llamadaApi(){
+  localStorage.removeItem('cartItems');
   console.log('LO QUE VA PARA EL  API:'+JSON.stringify(this.productoObj));
   let pedido=new Pedido();
   pedido.orden=new Orden();
@@ -146,12 +177,13 @@ llamadaApi(){
     }
   );
 
-  localStorage.removeItem('cartItems');
+  
 var item = {
     shippingDetails: this.checkoutForm.value,
     product: this.products,
     orderId: 1,
-    totalAmount: subtotal
+    totalAmount: subtotal,
+    totalCompra:this.totalNuevo
 };
 
 localStorage.setItem("checkoutItems", JSON.stringify(item));
@@ -230,3 +262,9 @@ localStorage.setItem("checkoutItems", JSON.stringify(item));
   }
 
 }
+
+
+
+ interface Consumir{
+valor:number;
+};

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Observable, from } from 'rxjs';
+import{GMapService} from '../../servicios/GMapService';
 
 @Component({
   selector: 'app-faq',
@@ -7,6 +8,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent implements OnInit {
+
+  @ViewChild('map') mapRef: ElementRef;
 latitude:any;
 longitude:any;
 
@@ -17,11 +20,16 @@ longitude:any;
   display?: google.maps.LatLngLiteral;
 
 
-  constructor() { }
+  constructor(private gmapService: GMapService) { }
 
   ngOnInit(): void {
 
-
+    this.gmapService.initMap(this.mapRef.nativeElement, {
+      center: {lat: 1234.1234, lng: 1234.1234},
+      scrollwheel: true,
+      zoom: 8
+    });
+    
     
   }
 

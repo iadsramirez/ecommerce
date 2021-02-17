@@ -1,3 +1,16 @@
+<!--
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+-->
+
+
+
+
+
+
 <app-header-one [class]="'header-tools'"></app-header-one>
 
 <!-- Home slider start-->
@@ -11,20 +24,59 @@
                             <div class="slider-contain">
                                 <div>
                                     <h4>Bienvenidos</h4>
-                                    <h1>Mi Bodeguita</h1>
+                                    <h4>{{nombreComercioOriginal}}</h4>
                                     <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'tools'}" class="btn btn-solid">Comprar Ahora</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    
+
+
                     <div class="tools-parts" id="tools-move">
-                        <img src="assets/images/slider/33.jpg" class="img-fluid" alt="">
-                    </div>
-                    <div class="tools-parts1" id="tools-move1">
-                        <img src="assets/images/slider/34.jpg" class="img-fluid" alt="">
-                    </div>
+                        <div class="container">
+                         <div class="row"> 
+                             <div class="col-md-12">
+
+                          <!--<div [ngStyle]="{'background-image': 'url(' + logoUrl + ')','width': '200px', 'height': '200px'}"></div> -->       
+                             
+
+
+
+                                 <div id="gallery" class="carousel slide" data-ride="carousel">
+                                     <div class="carousel-inner">
+                                         <div class="carousel-item active">
+                                             <div class="row">
+
+                                                 <div class="col" *ngFor="let imagenes of lista">
+                                                     <img class="img-fluid" src="{{imagenes}}" alt="Image 1"/>
+                                                 </div>
+                                 
+                                                 
+                                             </div>
+                                         </div>
+                                 
+                                     </div>
+                                 
+                                     <a class="carousel-control-prev" href="#gallery" role="button" data-slide="prev">
+                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                         <span class="sr-only">Previous</span>
+                                     </a>
+                                 
+                                     <a class="carousel-control-next" href="#gallery" role="button" data-slide="next">
+                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                         <span class="sr-only">Next</span>
+                                     </a>
+                                 </div>
+
+
+                             </div>
+                         </div>
+                        </div>
+                     
+                     </div>
+                    
+                    
 
 
                 </div>
@@ -38,7 +90,7 @@
                             <div class="slider-contain">
                                 <div>
                                     <h4>Ahorra Comprando</h4>
-                                    <h1>Mi Bodeguita</h1>
+                                    <h4>{{nombreComercioOriginal}}</h4>
                                     <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'tools'}" class="btn btn-solid">Comprar Ahora</a>
                                 </div>
                             </div>
@@ -234,6 +286,7 @@
 <!--  logo section End-->
 
 <!-- Cart Open To Top Side-->
-<app-cart-variation [direction]="'top'" ></app-cart-variation>
+<!--
+<app-cart-variation [direction]="'top'" ></app-cart-variation>-->
 
 <app-footer-four></app-footer-four>

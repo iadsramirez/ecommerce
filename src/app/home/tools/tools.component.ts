@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HomeSlider, ProductSlider } from '../../shared/data/slider';
 import { Product } from '../../shared/classes/product';
 import { ProductService } from '../../shared/services/product.service';
 import {CategoriaProd} from '../../modelo/CategoriaProd';
+import { SettingsComponent } from 'src/app/shared/components/settings/settings.component';
 
 @Component({
   selector: 'app-tools',
@@ -13,22 +14,49 @@ import {CategoriaProd} from '../../modelo/CategoriaProd';
 export class ToolsComponent implements OnInit, OnDestroy {
 
   public themeLogo: string = 'assets/images/icon/logo-5.png';
-  
+
+  nombreComercio:any;
+  nombreComercioOriginal:any;
+  //logoUrl = "http://207.180.199.154:8080/ecommerce/img/ARALSOFT/Promocion/TECNOLOGIA";
+
   public products: Product[] = [];
   public productCollections: any[] = [];
   listaCategoriaTemp:Array<any>=[];
   public listaCategoria:Array<any>=[];
+  listaImagenBanner:Array<any>;
+  lista:any=[];
+
+  //@ViewChild(SettingsComponent) hijo: SettingsComponent;
+
 
   constructor(private _sanitizer:DomSanitizer,
     public productService: ProductService) {
+
+      
+      this.productService.obtenerImagenBanner().subscribe(
+        imagenes=>{
+          //console.log('Imagenes'+JSON.stringify(imagenes));
+          this.listaImagenBanner=imagenes;
+          this.listaImagenBanner.forEach(element => {
+         //   console.log('la mierda que..:'+element.url);
+            this.lista.push('http://'+element.url);
+           
+           // console.log('Imagenes de mierda'+JSON.stringify(this.lista));
+          });
+        }
+      );
+    
+      localStorage.setItem('cartItems', '');
 
      this.productService.obtenerCategorias().subscribe(
        catego=>{
          this.listaCategoriaTemp=catego;
          this.listaCategoriaTemp.forEach(elemento=>{
+           //console.log('OBJETO CATEGORIAS'+JSON.stringify(elemento));
            let categoriProd=new CategoriaProd();
-           categoriProd.image=elemento.url;
+           categoriProd.image=elemento.path;
            categoriProd.title=elemento.nombre;
+           categoriProd.codigoCategoria=elemento.codigoInterno;
            this.listaCategoria.push(categoriProd);
          });
        }
@@ -45,6 +73,34 @@ export class ToolsComponent implements OnInit, OnDestroy {
         })
       })
     });
+
+
+    this.nombreComercioOriginal='Mi Bodeguita';
+
+
+
+    if(localStorage.getItem('comercio')){
+      //const myData = JSON.parse(localStorage.getItem('comercio'));
+
+     this.nombreComercio= JSON.parse(localStorage.getItem('comercio'));   
+      this.nombreComercioOriginal=this.nombreComercio;
+    }
+
+/*
+    this.nombreComercio= JSON.parse(localStorage.getItem('comercio'));
+    console.log('nombreComercio'+this.nombreComercio);
+
+    if(this.nombreComercio){
+      console.log('INGRESO EN LA MIERDA 1');
+      this.nombreComercioOriginal=this.nombreComercio;
+    }else{
+      console.log('INGRESO EN AMABAS MIERDAS');
+      this.nombreComercioOriginal='Mi Bodeguita';
+    }*/
+
+
+
+
   }
 
   public HomeSliderConfig: any = HomeSlider;
@@ -95,11 +151,13 @@ export class ToolsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // Add class in body
     document.body.classList.add("tools-bg");
+    localStorage.setItem('cartItems', '');
   }
 
   ngOnDestroy(): void {
     // Remove class in body
     document.body.classList.remove("tools-bg");
+   // localStorage.setItem('cartItems', '');
   }
 
   // Product Tab collection
@@ -110,5 +168,34 @@ export class ToolsComponent implements OnInit, OnDestroy {
       }
     })
   }
+
+
+
+
+
+
+
+
+
+  toDataURL(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            callback(reader.result);
+        }
+        reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+}
+
+
+
+photoURL(imageUrl) {
+  console.log('imageUrl:'+imageUrl)
+  return this._sanitizer.bypassSecurityTrustUrl(imageUrl);
+}
 
 }

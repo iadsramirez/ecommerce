@@ -1,10 +1,20 @@
+
+
+import {Promise} from 'es6-promise';
+import { Injectable } from '@angular/core';
+
+
+
+
 //Replace this by anything without an ID_KEY
 const getScriptSrc = (callbackName) => {
     return `https://maps.googleapis.com/maps/api/js?key=AIzaSyA5we8Vvt7nFC3EWBW5Nh5G7vBDlgC-asc&callback=${callbackName}`;
   }
 
 
-
+  @Injectable({
+    providedIn: 'root',
+})
 
 export class GMapService{
 
@@ -47,12 +57,17 @@ export class GMapService{
       });
       window.document.body.appendChild(script);
     }
-  /*
+  
     /** Exemple of wrapped to promise API */
-    /*
-    geocode(address: string | google.maps.GeocoderRequest): Promise<google.maps.GeocoderResult[]> {
+    
+    geocode(address: string | google.maps.GeocoderRequest): Promise<any> {
       return this.onReady().then(() => {
-        this.geocoder.geocode(typeof address == "google.maps.GeocoderRequest" ? address: {address: address},
+        const request: google.maps.GeocoderRequest = {
+          address: '1600 Amphitheatre Parkway, Mountain View, CA'
+        };
+        //this.geocoder.geocode(typeof address == "google.maps.GeocoderRequest" ? address: {address: address}
+        this.geocoder.geocode(request
+        ,
             (results: google.maps.GeocoderResult[], status: google.maps.GeocoderStatus) => {
               if(status == google.maps.GeocoderStatus.OK) {
                 return results;
@@ -61,8 +76,8 @@ export class GMapService{
               }
         });
       });
-    });
-*/
+    }
+
 
 
 

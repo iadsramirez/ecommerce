@@ -31,7 +31,11 @@ export class AboutUsComponent implements OnInit {
 
 
   redireccionar(nombre:any,imagen:any){
-    localStorage.setItem('comercio', nombre);
+    let nom:string;
+
+    const comercial={valor:nom};
+
+    localStorage.setItem('comercio', JSON.stringify(nombre));
     localStorage.setItem('comercioImg', imagen);
 
     this.router.navigateByUrl('/home/tools');

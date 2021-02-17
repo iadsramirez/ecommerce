@@ -154,7 +154,7 @@
                             </td>
                             <td>
                                 <h2>
-                                    {{ (product.precio ) * productService?.Currency.price | currency:productService?.Currency.currency:'symbol' }}
+                                    S/{{ (product.precio ) * productService?.Currency.price }}
                                 </h2>
                             </td>
                             <td>
@@ -181,7 +181,7 @@
                             </td>
                             <td>
                                 <h2 class="td-color">
-                                    {{ ((product.precio) * product.cantidad) * productService?.Currency.price | currency:productService?.Currency.currency:'symbol' }}
+                                    S/{{ ((product.precio) * product.cantidad) * productService?.Currency.price }}
                                 </h2>
                             </td>
                         </tr>
@@ -192,7 +192,7 @@
                         <tr>
                             <td>total  :</td>
                             <td>
-                                <h2> {{ getTotalIproducto | async | currency:productService?.Currency.currency:'symbol'}}</h2>
+                                <h2> S/{{ getTotalIproducto  | async | number: '1.2-2' }}</h2>
                             </td>
                         </tr>
                     </tfoot>

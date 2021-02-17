@@ -53,6 +53,8 @@
     
     
     <div class="cart-info cart-wrap">
+     
+      
       <!--
       <a href="javascript:void(0)" title="Add to cart" (click)="CartModal.openModal(product)" *ngIf="cartModal">
         <i class="ti-shopping-cart"></i>
@@ -89,6 +91,10 @@
         <del *ngIf="false"><span class="money">
             {{ productoObj?.precio * currency?.price}}S./</span></del>
       </h6>
+
+      <a href="javascript:void(0)" title="Agregar al Carrito" (click)="addProductoCart(productoObj)" >
+        <i class="ti-shopping-cart"></i>Agregar
+      </a>
 
       
 

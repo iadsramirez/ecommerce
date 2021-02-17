@@ -4,6 +4,7 @@ import { CartModalComponent } from "../../modal/cart-modal/cart-modal.component"
 import { Product } from "../../../classes/product";
 import { ProductService } from "../../../services/product.service";
 import { IProducto } from 'src/app/modelo/IProducto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-box-one',
@@ -19,13 +20,17 @@ export class ProductBoxOneComponent implements OnInit {
   @Input() onHowerChangeImage: boolean = false; // Default False
   @Input() cartModal: boolean = false; // Default False
   @Input() loader: boolean = false;
+  public counter: number = 1;
+
   
   @ViewChild("quickView") QuickView: QuickViewComponent;
   @ViewChild("cartModal") CartModal: CartModalComponent;
 
   public ImageSrc : string
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService,private router: Router) { 
+    this.cartModal=true;
+  }
 
   ngOnInit(): void {
    
@@ -75,5 +80,21 @@ export class ProductBoxOneComponent implements OnInit {
   addToCompare(product: any) {
     this.productService.addToCompare(product);
   }
+
+
+
+
+
+  async addProductoCart(product: any) {
+    product.cantidad = this.counter || 1;
+    
+    const status = await this.productService.agregarCarrito(product);
+    if (status)
+      this.router.navigate(['/shop/cart']);
+  }
+
+
+
+
 
 }

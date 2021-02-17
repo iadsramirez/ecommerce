@@ -81,11 +81,10 @@
 
 
                                             <div class="col-sm-12 text-center section-b-space mt-5 no-found"
-                                                *ngIf="!products.length">
+                                                *ngIf="!productosObjeto.length"> <!--*ngIf="!products.length"-->
                                                 <img src="assets/images/empty-search.jpg" class="img-fluid mb-4">
-                                                <h3>Sorry! Couldn't find the product you were looking For!!! </h3>
-                                                <p>Please check if you have misspelt something or try searching with
-                                                    other words.</p>
+                                                <h3>Lo sentimos! no fue encontrado el producto de la categoria!!! </h3>
+                                                <p>por favor haz una nueva busqueda</p>
                                                 <a [routerLink]="['/shop/collection/left/sidebar']"
                                                     class="btn btn-solid">continuar con la compra</a>
                                             </div>

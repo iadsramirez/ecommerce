@@ -40,6 +40,7 @@ import { MasonryGridThreeComponent } from './portfolio/masonry-grid-three/masonr
 import { MasonryGridFourComponent } from './portfolio/masonry-grid-four/masonry-grid-four.component';
 import { MasonryFullWidthComponent } from './portfolio/masonry-full-width/masonry-full-width.component';
 import {GoogleMapsModule} from '@angular/google-maps'; 
+import { GMapService } from '../servicios/GMapService';
 
 
 
@@ -87,6 +88,8 @@ import {GoogleMapsModule} from '@angular/google-maps';
    
     SharedModule,
     PagesRoutingModule
+  ],providers: [
+    GMapService
   ]
 })
 export class PagesModule { }

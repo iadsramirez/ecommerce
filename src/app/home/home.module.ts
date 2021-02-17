@@ -26,6 +26,7 @@ import { LogoComponent } from './widgets/logo/logo.component';
 import { InstagramComponent } from './widgets/instagram/instagram.component';
 import { ServicesComponent } from './widgets/services/services.component';
 import { CollectionComponent } from './widgets/collection/collection.component';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CollectionComponent } from './widgets/collection/collection.component';
     LogoComponent,
     InstagramComponent,
     ServicesComponent,
-    CollectionComponent
+    CollectionComponent,
+    SafePipe
   ],
   imports: [
     CommonModule,
