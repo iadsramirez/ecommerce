@@ -13,19 +13,21 @@
 
 <app-header-one [class]="'header-tools'"></app-header-one>
 
+<app-settings [bandera]="limpiar"></app-settings>
+
 <!-- Home slider start-->
 <section class="p-0 height-85 tools_slider">
     <owl-carousel-o [options]="HomeSliderConfig" class="home-slider">
-        <ng-template carouselSlide>
-            <div class="home text-center" [ngStyle]="{'background-image': 'url(assets/images/slider/32.jpg)'}">
+        <ng-template carouselSlide *ngFor="let imagenes of lista">
+            <div class="home text-center" [ngStyle]="{'background-image': 'url('+imagenes+')'}">
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <div class="slider-contain">
                                 <div>
                                     <h4>Bienvenidos</h4>
-                                    <h4>{{nombreComercioOriginal}}</h4>
-                                    <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'tools'}" class="btn btn-solid">Comprar Ahora</a>
+                                    <h4>{{nombreComercioOriginal}}</h4> <!--[queryParams]="{ category: 'tools'}"-->
+                                    <a [routerLink]="['/shop/collection/left/sidebar']"  class="btn btn-solid">Comprar Ahora</a>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +45,9 @@
 
 
 
-                                 <div id="gallery" class="carousel slide" data-ride="carousel">
+<!---  
+
+                         <div id="gallery" class="carousel slide" data-ride="carousel">
                                      <div class="carousel-inner">
                                          <div class="carousel-item active">
                                              <div class="row">
@@ -68,6 +72,9 @@
                                          <span class="sr-only">Next</span>
                                      </a>
                                  </div>
+-->
+
+        
 
 
                              </div>
@@ -82,7 +89,7 @@
                 </div>
             </div>
         </ng-template>
-        <ng-template carouselSlide>
+        <ng-template carouselSlide *ngIf="false">
             <div class="home text-center" [ngStyle]="{'background-image': 'url(assets/images/slider/33.jpg)'}">
                 <div class="container">
                     <div class="row">

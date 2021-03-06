@@ -4,6 +4,8 @@ import { ViewportScroller } from '@angular/common';
 import { ProductService } from "../../../shared/services/product.service";
 import { Product } from '../../../shared/classes/product';
 import { IProducto } from 'src/app/modelo/IProducto';
+import { CategoriaProd } from 'src/app/modelo/CategoriaProd';
+import { CollectionSlider } from 'src/app/shared/data/slider';
 
 @Component({
   selector: 'app-collection-left-sidebar',
@@ -12,6 +14,10 @@ import { IProducto } from 'src/app/modelo/IProducto';
 })
 export class CollectionLeftSidebarComponent implements OnInit {
 
+  public listaCategoria:Array<any>=[];
+  listaCategoriaTemp:Array<any>=[];
+
+  public CollectionSliderConfig: any = CollectionSlider;
   public grid: string = 'col-xl-3 col-md-6';
   public layoutView: string = 'grid-view';
   public products: Product[] = [];
@@ -31,6 +37,25 @@ export class CollectionLeftSidebarComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
     private viewScroller: ViewportScroller, public productService: ProductService) {
+
+
+      this.productService.obtenerCategorias().subscribe(
+        catego=>{
+          this.listaCategoriaTemp=catego;
+          this.listaCategoriaTemp.forEach(elemento=>{
+            //console.log('OBJETO CATEGORIAS'+JSON.stringify(elemento));
+            let categoriProd=new CategoriaProd();
+           // console.log('direccion de la imagen:'+JSON.stringify(elemento));
+            if(elemento.path){
+             categoriProd.image=String(elemento.path).replace(".png","").replace(".jpg","").replace(".jpeg","");
+            }
+            
+            categoriProd.title=elemento.nombre;
+            categoriProd.codigoCategoria=elemento.codigoInterno;
+            this.listaCategoria.push(categoriProd);
+          });
+        }
+      ); 
 
 
       this.productService.getProductosObjeto.subscribe(

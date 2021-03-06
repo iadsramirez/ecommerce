@@ -25,13 +25,20 @@ export class ToolsComponent implements OnInit, OnDestroy {
   public listaCategoria:Array<any>=[];
   listaImagenBanner:Array<any>;
   lista:any=[];
+  limpiar:boolean;
 
+  
   //@ViewChild(SettingsComponent) hijo: SettingsComponent;
 
 
   constructor(private _sanitizer:DomSanitizer,
     public productService: ProductService) {
 
+      this.limpiar=true;
+
+     // window.location.reload(true);
+
+     localStorage.setItem('cartItems', '');
       
       this.productService.obtenerImagenBanner().subscribe(
         imagenes=>{
@@ -54,7 +61,11 @@ export class ToolsComponent implements OnInit, OnDestroy {
          this.listaCategoriaTemp.forEach(elemento=>{
            //console.log('OBJETO CATEGORIAS'+JSON.stringify(elemento));
            let categoriProd=new CategoriaProd();
-           categoriProd.image=elemento.path;
+          // console.log('direccion de la imagen:'+JSON.stringify(elemento));
+           if(elemento.path){
+            categoriProd.image=String(elemento.path).replace(".png","").replace(".jpg","").replace(".jpeg","");
+           }
+           
            categoriProd.title=elemento.nombre;
            categoriProd.codigoCategoria=elemento.codigoInterno;
            this.listaCategoria.push(categoriProd);

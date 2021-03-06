@@ -1,5 +1,6 @@
 <app-breadcrumb [title]="'Coleccion'" [breadcrumb]="'Coleccion'"></app-breadcrumb>
 <!-- section start -->
+<app-settings [bandera]='true'></app-settings>
 
 
 <section class="section-b-space">
@@ -16,10 +17,113 @@
                                         <img src="assets/images/collection_banner_prod.jpg" class="img-fluid " alt="">
                                     </a>
                                     <div class="top-banner-content small-section">
-                                        <h4>Listado de productos</h4>
+                                       
+                                        
+                                        <!--   
+
+                                            <ul  aria-label="CATEGORIAS" class="list-group list-group-horizontal" style="width: 1000px; height: 250px; overflow: auto;background: transparent;">
+                                              
+                                            <li *ngFor="let item of listaCategoria" class="list-group-item list-group-item-warning">
+                                                
+                                                <img [src]="item.image" height="100px" width="100px">
+                                                <a [routerLink]="['/shop/collection/left/sidebar']"
+                                                [queryParams]="{ category: item.codigoCategoria}"
+                                                class="btn btn-outline">{{item.title}}
+                                               
+                                             </a>
+                                            </li>
+                                        </ul>
+
+                                        -->
+                                        
+
+
+
+
+
+
+
+
                                     </div>
                                 </div>
+
+                                <h3 style="color: black;font-weight: bolder;">CATEGORIAS</h3><br/>
+
+
+
+                                <owl-carousel-o [options]="CollectionSliderConfig" class="category-m no-arrow">
+                                    <ng-container *ngFor="let cats of listaCategoria">
+                                      <ng-template carouselSlide>
+                                        <div>
+                                          <div class="category-wrapper" [ngClass]="'pt-0'">
+                                            <div>
+                                              <img [src]="cats.image" class="img-fluid w-auto" alt="" style="size: 50px;">
+                                              <h4>{{cats.title}}</h4>
+                                              <ul class="category-link" [innerHTML]="cats.text"></ul>
+                                              <a [routerLink]="['/shop/collection/left/sidebar']"
+                                                 [queryParams]="{ category: cats.codigoCategoria}"
+                                                 class="btn btn-outline">
+                                                 ver mas
+                                              </a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </ng-template>
+                                    </ng-container>
+                                  </owl-carousel-o>                               
+                               
+
+
+
+
+
+
+                                
+                                <div class="row" *ngIf="false">
+                                    <ngb-carousel
+
+                                    [showNavigationArrows]="true" 
+                                    [showNavigationIndicators]="true"
+                                    interval="1000"
+                                    [keyboard]="true"
+                                    [pauseOnHover]="true"
+                                    [wrap]="true"
+                                    
+                                    >
+                                        <ng-template ngbSlide *ngFor="let item of listaCategoria">
+                                            <div class="container">
+                                                <div class="row col-md-12">
+                                                    <div class="picsum-img-wrapper">
+                                                        <img [src]="item.image" style="align-content: center;" height="300px" width="800px">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row col-md-12 my-2" >
+                                                    <div  class="carousel-caption text-danger ">
+                                                        <a [routerLink]="['/shop/collection/left/sidebar']"
+                                                        [queryParams]="{ category: item.codigoCategoria}"
+                                                        class="btn btn-outline"> <p style="background-color: rgb(250, 58,58);color: white;font-weight: bold;font-size: 25px">{{item.title}}</p>
+                                                       
+                                                     </a>
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                             
+                                            
+                                        </ng-template>
+                                     
+                                    </ngb-carousel>
+                                </div>
+
+
+
                                 <div class="row">
+
+                                    <h4>LISTA DE PRODUCTOS</h4>
+
                                     <div class="col-xl-12">
                                         <div class="filter-main-btn" (click)="toggleMobileSidebar()">
                                             <span class="filter-btn btn btn-theme">

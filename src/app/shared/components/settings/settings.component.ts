@@ -1,18 +1,21 @@
-import { Component, OnInit, Injectable, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, OnInit, Injectable, PLATFORM_ID, Inject, Input } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { ProductService } from "../../services/product.service";
 import { Product } from "../../classes/product";
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
+  providers:[AuthService]
 })
 export class SettingsComponent implements OnInit {
 
-  public products: Product[] = []
+  public products: Product[] = [];
+  @Input() bandera:boolean;
   
   public languages = [{ 
     name: 'Español',
@@ -30,9 +33,17 @@ export class SettingsComponent implements OnInit {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
     private translate: TranslateService,
-    public productService: ProductService) {
+    public productService: ProductService,public authService:AuthService) {
+
+
+      console.log('VALOR QUE VIENE '+this.authService.flag);
 
       this.productService.cartItems.subscribe(response => this.products = response);
+
+/*
+      if(!this.bandera){
+        this.products=[];
+      }*/
 
   }
 

@@ -1,5 +1,8 @@
 <app-breadcrumb [title]="'Carrito'" [breadcrumb]="'Carrito '"></app-breadcrumb>
 <!-- section start -->
+
+<app-settings [bandera]=true></app-settings>
+
 <section class="cart-section section-b-space">
     <div class="container">
         <!-- 
@@ -140,7 +143,7 @@
                                     </div>
                                     <div class="col-xs-3">
                                         <h2 class="td-color">
-                                            {{ (product.precio | discount:product) * productService?.Currency.price | currency:productService?.Currency.currency:'symbol' }}
+                                            {{ (product.precio | discount:product) * productService?.Currency.price | number:'.2-2' }}
                                         </h2>
                                     </div>
                                     <div class="col-xs-3">
@@ -154,7 +157,7 @@
                             </td>
                             <td>
                                 <h2>
-                                    S/{{ (product.precio ) * productService?.Currency.price }}
+                                    S/{{ (product.precio ) * productService?.Currency.price | number: '1.2-2'  }}
                                 </h2>
                             </td>
                             <td>
@@ -181,7 +184,7 @@
                             </td>
                             <td>
                                 <h2 class="td-color">
-                                    S/{{ ((product.precio) * product.cantidad) * productService?.Currency.price }}
+                                    S/{{ ((product.precio) * product.cantidad) * productService?.Currency.price | number: '1.2-2' }}
                                 </h2>
                             </td>
                         </tr>
@@ -192,7 +195,7 @@
                         <tr>
                             <td>total  :</td>
                             <td>
-                                <h2> S/{{ getTotalIproducto  | async | number: '1.2-2' }}</h2>
+                                <h2> S/{{ totales | number: '1.2-2' }}</h2>
                             </td>
                         </tr>
                     </tfoot>
@@ -209,10 +212,10 @@
 
         <div class="row cart-buttons" *ngIf='products.length'>
             <div class="col-6">
-                <a [routerLink]="['/shop/collection/left/sidebar']" class="btn btn-solid">continuar comprando</a>
+                <a [routerLink]="['/shop/collection/left/sidebar']" class="btn btn-solid">Continuar comprando</a>
             </div>
             <div class="col-6">
-                <a [routerLink]="['/shop/checkout']" class="btn btn-solid">check out</a>
+                <a [routerLink]="['/shop/checkout']" class="btn btn-solid">Terminar Compra</a>
             </div>
         </div>
     </div>

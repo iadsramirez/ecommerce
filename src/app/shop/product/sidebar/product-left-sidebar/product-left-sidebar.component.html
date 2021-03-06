@@ -1,5 +1,7 @@
 <app-breadcrumb [title]="productoObj?.nombre" [breadcrumb]="productoObj?.nombre"></app-breadcrumb>
 <!-- section start -->
+
+<app-settings [bandera]=true></app-settings>
 <section class="section-b-space">
   <div class="collection-wrapper">
     <div class="container">
@@ -53,7 +55,7 @@
                   <h2>{{ productoObj?.nombre }}</h2>
 
                   <h3>
-                    {{productoObj?.precio | currency: productService.Currency?.currency:'symbol'}}
+                    S/ {{productoObj?.precio | number:'1.2-2'  }}
                   </h3>
 
                   <div class="product-buttons">

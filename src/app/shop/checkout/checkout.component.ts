@@ -27,17 +27,23 @@ export class CheckoutComponent implements OnInit {
   public payPalConfig ? : IPayPalConfig;
   public payment: string = 'Stripe';
   public amount:  any;
+  public limpiar:boolean;
 
    listaDepartamentos:any;
    listaProvincia:any;
    listaDistrito:any;
    valorConsumo:number;
    consumo:number;
+   impuesto:number=0;
+   
 
 
   constructor(private router: Router,private fb: FormBuilder,
     public productService: ProductService,
     private orderService: OrderService) { 
+
+      this.limpiar=true;
+
     this.checkoutForm = this.fb.group({
       firstname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
       lastname: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z ]+[a-zA-Z]$')]],
@@ -73,16 +79,22 @@ export class CheckoutComponent implements OnInit {
   );
 
 
-  console.log('valor del consumo de mierdAa'+this.consumo);
+ // console.log('valor del consumo de mierdAa'+this.consumo);
    
-    this.productService.cartItems.subscribe(response => this.products = response);
+    this.productService.cartItems.subscribe(response => {
+      this.products = response
+     // console.log('el objeto producto:'+JSON.stringify(response));
+    });
+
     this.getTotal.subscribe(amount => this.amount = amount);
-    this.productService.cartItemsIproducto.subscribe(response => this.productoObj = response);
+    this.productService.cartItemsIproducto.subscribe(response =>{{this.productoObj = response
+  //  console.log('lo que llega a la mierdad '+JSON.stringify(response));
+    }} );
     this.listaDepartamentos=[];
     this.productService.obtenerDepartamento().subscribe(
       depart=>{
       
-        console.log('Vil'+JSON.stringify(depart));
+       // console.log('Vil'+JSON.stringify(depart));
         this.listaDepartamentos=depart;
       }
     );
@@ -105,11 +117,37 @@ export class CheckoutComponent implements OnInit {
   }
 
   public get totalNuevo():number{
-    return this.productService.getCantida();
+
+    this.impuesto=0;
+    this.productService.cartTotalCantidadSubTotal().subscribe(
+      valor=>{
+
+        if(this.impuesto==0){
+          this.impuesto=Number(valor)*0.19;
+         
+        }
+        
+      }
+    );
+
+
+     // console.log('this.impuesto'+this.impuesto);
+    return this.productService.getCantida()+this.impuesto;
   }
 
 
   public get getSubTotalProducto():Observable<number>{
+    this.impuesto=0;
+    this.productService.cartTotalCantidadSubTotal().subscribe(
+      valor=>{
+
+        if(this.impuesto==0){
+          this.impuesto=Number(valor)*0.19;
+         
+        }
+        
+      }
+    );
     return this.productService.cartTotalCantidadSubTotal();
   }
 
@@ -135,15 +173,18 @@ export class CheckoutComponent implements OnInit {
 }
 
 llamadaApi(){
-  localStorage.removeItem('cartItems');
-  console.log('LO QUE VA PARA EL  API:'+JSON.stringify(this.productoObj));
+
+  this.limpiar=true;
+  localStorage.removeItem("cartItems");
+  //localStorage.removeItem('cartItems');
+  //console.log('LO QUE VA PARA EL  API:'+JSON.stringify(this.productoObj));
   let pedido=new Pedido();
   pedido.orden=new Orden();
   pedido.detOrdenList=[];
 
   pedido.orden.subtotal=0;
   if(this.checkoutForm.get('distrito').value){
-    console.log('pedido.orden.ubicGeog:'+this.checkoutForm.get('distrito').value);
+   // console.log('pedido.orden.ubicGeog:'+this.checkoutForm.get('distrito').value);
     pedido.orden.ubicGeog=Number(this.checkoutForm.get('distrito').value); 
   }
    
@@ -170,12 +211,14 @@ llamadaApi(){
   pedido.orden.subtotal=subtotal;
   pedido.orden.observaciones='Orden';
 
-  console.log('objeto que mando al api:'+JSON.stringify(pedido));
+ // console.log('objeto que mando al api:'+JSON.stringify(pedido));
   this.productService.guardarPedido(pedido).subscribe(
     guardado=>{
       console.log('Objeto Guardado'+JSON.stringify(guardado));
     }
   );
+
+
 
   
 var item = {
@@ -183,11 +226,14 @@ var item = {
     product: this.products,
     orderId: 1,
     totalAmount: subtotal,
-    totalCompra:this.totalNuevo
+    totalCompra:this.totalComprasCosto(this.consumo)
 };
+
+
 
 localStorage.setItem("checkoutItems", JSON.stringify(item));
   this.router.navigate(['/shop/checkout/success', 1]);
+  
   //this.orderService.probarPedido(this.products, this.checkoutForm.value, 1, this.amount);
 }
 
@@ -209,6 +255,22 @@ localStorage.setItem("checkoutItems", JSON.stringify(item));
       description: 'Confirmado Con Exito!!',
       amount: this.amount * 100
     }) 
+  }
+
+
+
+  quitarImpuesto(total:number,impuesto:number){
+    return total-impuesto;
+  }
+
+  totalComprasCosto(costo:number){
+    let valores:number=0;
+    this.getSubTotalProducto.subscribe(
+      valor=>{
+        valores =valor;
+      }
+    );
+   return valores+costo;
   }
 
   // Paypal Payment Gateway

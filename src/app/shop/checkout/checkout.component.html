@@ -1,4 +1,9 @@
 <app-breadcrumb [title]="'Checkout'" [breadcrumb]="'Checkout'"></app-breadcrumb>
+<app-settings
+[bandera]="limpiar"
+>
+
+</app-settings>
 <section class="section-b-space">
     <div class="container padding-cls">
         <div class="checkout-page">
@@ -162,7 +167,7 @@
                                         <li *ngFor="let product of productoObj">
                                         	 {{ product.nombre }} × {{ product.cantidad }}
                                         	<span>
-                                                {{ (product.precio | discount:product) * productService?.Currency.price | currency:productService?.Currency.currency:'symbol' }}
+                                                {{ (product.precio ) * (product.cantidad) | number: '1.2-2'}}
                                             </span>
                                         </li>
                                     </ul>
@@ -171,7 +176,7 @@
                                     </ul>
                                     <ul class="sub-total">
                                         <li>
-                                        	Subtotal <span class="count">{{ getSubTotalProducto | async | currency:productService?.Currency.currency:'symbol'}}</span>
+                                        	Subtotal<span class="count">S/{{ getSubTotalProducto | async | number: '1.2-2'}}</span>
                                         </li>
                                         <li *ngIf='productoObj.length'>
                                         	Metodo de entrega
@@ -188,11 +193,15 @@
                                         </li>
                                     </ul>
                                     <ul class="total">
+                                        <li *ngIf="false">Impuesto:  <span class="count">S/ {{impuesto | number : '1.2-2'}}</span></li>
                                         <li>Costo de Envio:  <span class="count">S/ {{consumo | number : '1.2-2'}}</span></li>
-                                        <li>Total <span class="count">{{ totalNuevo | number : '1.2-2'}}</span></li>
+                                        <li>Total <span class="count">S/{{ totalComprasCosto(consumo)  | number : '1.2-2'}}</span></li>
                                     </ul>
                                 </div>
 
+
+
+                                
                                 <div class="payment-box" *ngIf='products.length'>
                                     <div class="upper-box" *ngIf="false">
                                         <div class="payment-options">
@@ -228,3 +237,4 @@
         </div>
     </div>
 </section>
+

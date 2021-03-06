@@ -17,7 +17,7 @@ import { SubCategoria } from '../modelo/SubCategoria';
 @Injectable()
 export class AuthService {
 
-
+  flag:boolean;
   public user: User;
   public mensaje: string;
   baseurl:string=`http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.`;
@@ -114,6 +114,15 @@ export class AuthService {
 
   obtenerProveedor():Observable<any>{
     return  this.http.get(`http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio`);
+  }
+
+
+
+  get banderas():boolean{
+    return this.flag;
+  }
+  set banderas(val: boolean){
+    this.flag = val;
   }
 
 

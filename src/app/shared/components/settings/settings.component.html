@@ -59,7 +59,7 @@
         </li>
         <li>
           <div class="total">
-            <h5>subtotal : <span>{{ getTotalIprod | async | currency:productService?.Currency.currency:'symbol' }}</span></h5>
+            <h5>subtotal : <span>S/{{ getTotalIprod | async }}</span></h5>
           </div>
         </li>
         <li>

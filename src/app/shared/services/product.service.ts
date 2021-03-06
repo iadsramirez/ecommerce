@@ -234,6 +234,7 @@ public get cartItemsIproducto(): Observable<IProducto[]> {
     observer.next(state.cart);
     observer.complete();
   });
+  
   return <Observable<IProducto[]>>itemsStream;
 }
 
@@ -453,12 +454,14 @@ public getCantida():number{
 }
 
 public cartTotalCantidadSubTotal(): Observable<number> {
-  let consumo:any=JSON.parse(localStorage.getItem('consumoComercio'));
-  console.log('consumo desde el api de producto:'+JSON.stringify(consumo));
+  let valor:number=0;
   return this.cartItemsIproducto.pipe(map((product: IProducto[]) => {
     return product.reduce((prev, curr: IProducto) => {
+      console.log('prev'+JSON.stringify(curr));
       let price = curr.precio;
-      return (prev+ price )* curr.cantidad * this.Currency.price;
+      //return (prev+ price )* curr.cantidad * curr.precio;
+       valor=valor+(curr.cantidad * curr.precio);
+      return  valor;
     }, 0);
   }));
 }

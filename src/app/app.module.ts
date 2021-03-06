@@ -25,6 +25,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { environment } from 'src/environments/environment';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 
@@ -69,7 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [],
+  providers: [ { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
