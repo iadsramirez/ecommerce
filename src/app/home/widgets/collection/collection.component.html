@@ -2,10 +2,10 @@
   <ng-container *ngFor="let cats of categories">
     <ng-template carouselSlide>
       <div>
-        <div class="category-wrapper" [ngClass]="class">
+        <div  class="category-wrapper" [ngClass]="class">
           <div>
-            <img [src]="cats.image" class="img-fluid w-auto" alt="" style="size: 50px;">
-            <h4>{{cats.title}}</h4>
+          <img [src]="cats.image"  alt="" width="400" height="200" >
+          <small><strong>{{cats.title}}</strong> </small>
             <ul class="category-link" [innerHTML]="cats.text"></ul>
             <a [routerLink]="['/shop/collection/left/sidebar']"
                [queryParams]="{ category: cats.codigoCategoria}"

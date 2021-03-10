@@ -71,7 +71,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
     // Get Query params..
     this.route.queryParams.subscribe(params => {
 
-      console.log('Params'+JSON.stringify(params));
+     // console.log('Params'+JSON.stringify(params));
 
       this.brands = params.brand ? params.brand.split(",") : [];
       this.colors = params.color ? params.color.split(",") : [];
@@ -81,7 +81,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
       this.tags = [...this.brands, ...this.colors, ...this.size]; // All Tags Array
 
       this.category = params.category ? params.category : null;
-      console.log('el valor de la mierda de categoria:'+this.category);
+    //  console.log('el valor de la mierda de categoria:'+this.category);
       this.sortBy = params.sortBy ? params.sortBy : 'ascending';
       this.pageNo = params.page ? params.page : this.pageNo;
 
@@ -95,7 +95,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
         // Category Filter
         if (params.category){
           this.products = this.products.filter(item => item.type == this.category);
-          console.log('hago parametro categoria');      
+        //  console.log('hago parametro categoria');      
           this.productService.getProductosObjeto.subscribe(
             
             (response:IProducto[]) => {

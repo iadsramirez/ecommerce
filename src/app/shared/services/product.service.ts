@@ -457,7 +457,7 @@ public cartTotalCantidadSubTotal(): Observable<number> {
   let valor:number=0;
   return this.cartItemsIproducto.pipe(map((product: IProducto[]) => {
     return product.reduce((prev, curr: IProducto) => {
-      console.log('prev'+JSON.stringify(curr));
+    //  console.log('prev'+JSON.stringify(curr));
       let price = curr.precio;
       //return (prev+ price )* curr.cantidad * curr.precio;
        valor=valor+(curr.cantidad * curr.precio);
