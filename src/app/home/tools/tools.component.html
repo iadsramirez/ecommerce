@@ -17,7 +17,7 @@
 
 <!-- Home slider start-->
 <section class="p-0 height-85 tools_slider">
-    <owl-carousel-o [options]="HomeSliderConfig" class="home-slider">
+    <owl-carousel-o [options]="HomeSliderConfig" class="home-slider"  *ngIf="lista?.length > 0">
         <ng-template carouselSlide *ngFor="let imagenes of lista">
             <div class="home text-center" [ngStyle]="{'background-image': 'url('+imagenes+')'}">
                 <div class="container">
@@ -26,7 +26,7 @@
                             <div class="slider-contain">
                                 <div>
                                     <h4>Bienvenidos</h4>
-                                    <h4>{{nombreComercioOriginal}}</h4> <!--[queryParams]="{ category: 'tools'}"-->
+                                    <h4 style="color: black;font-weight: bolder;">{{nombreComercioOriginal}}</h4> <!--[queryParams]="{ category: 'tools'}"-->
                                     <a [routerLink]="['/shop/collection/left/sidebar']"  class="btn btn-solid">Comprar Ahora</a>
                                 </div>
                             </div>
@@ -109,6 +109,83 @@
                 </div>
             </div>
         </ng-template>
+    </owl-carousel-o>
+
+    <owl-carousel-o [options]="HomeSliderConfig" class="home-slider"  *ngIf="lista?.length == 0">
+
+        
+        <ng-template carouselSlide >
+            <div class="home text-center" [ngStyle]="{'background-image': 'url(assets/images/slider/35.jpg)'}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="slider-contain">
+                                <div>
+                                    <h4>Bienvenidos</h4>
+                                    <h4 style="color: black;font-weight: bolder;">{{nombreComercioOriginal}}</h4> <!--[queryParams]="{ category: 'tools'}"-->
+                                    <a [routerLink]="['/shop/collection/left/sidebar']"  class="btn btn-solid">Comprar Ahora</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                    <div class="tools-parts" id="tools-move">
+                        <div class="container">
+                         <div class="row"> 
+                             <div class="col-md-12">
+
+                          <!--<div [ngStyle]="{'background-image': 'url(' + logoUrl + ')','width': '200px', 'height': '200px'}"></div> -->       
+                             
+
+
+
+<!---  
+
+                         <div id="gallery" class="carousel slide" data-ride="carousel">
+                                     <div class="carousel-inner">
+                                         <div class="carousel-item active">
+                                             <div class="row">
+
+                                                 <div class="col" *ngFor="let imagenes of lista">
+                                                     <img class="img-fluid" src="{{imagenes}}" alt="Image 1"/>
+                                                 </div>
+                                 
+                                                 
+                                             </div>
+                                         </div>
+                                 
+                                     </div>
+                                 
+                                     <a class="carousel-control-prev" href="#gallery" role="button" data-slide="prev">
+                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                         <span class="sr-only">Previous</span>
+                                     </a>
+                                 
+                                     <a class="carousel-control-next" href="#gallery" role="button" data-slide="next">
+                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                         <span class="sr-only">Next</span>
+                                     </a>
+                                 </div>
+-->
+
+        
+
+
+                             </div>
+                         </div>
+                        </div>
+                     
+                     </div>
+                    
+                    
+
+
+                </div>
+            </div>
+        </ng-template>
+
     </owl-carousel-o>
 </section>
 <!-- Home slider End -->

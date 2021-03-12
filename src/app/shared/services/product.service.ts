@@ -5,6 +5,7 @@ import { map, startWith, delay } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../classes/product';
 import { IProducto } from '../../modelo/IProducto';
+import { Compania } from '../../modelo/Compania';
 
 
 const state = {
@@ -25,12 +26,14 @@ export class ProductService {
   public OpenCart: boolean = false;
   public Products;
   public ProductosObjeto;
-  private baseUrl = "http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.producto";
+ // private baseUrl = "http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.producto";
+  private baseUrl = "http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.producto/productosPorAfiliado";
   private baseUrlOrden ="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.orden/";
   private baseUrlUbi ="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.ubigeo/"
   private baseUrlCat="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio/categorias";
   private baseUrlComercio="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio/comerciosPorAfiliado/1/1";
   private basUrlImagenBanner:string='http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.promocion';
+  private arrayDelService:any;
 
   constructor(private http: HttpClient,
     private toastrService: ToastrService) { }
@@ -44,8 +47,9 @@ export class ProductService {
 
   //////////////////////////////////////////////////////////
 
-  obtenerImagenBanner():Observable<any>{
-    return this.http.get('http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.promocion/');
+  obtenerImagenBanner(cia:any,afiliado:any):Observable<any>{
+    //http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.promocion/
+    return this.http.get('http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.promocion/promocionPorAfiliado/'+cia+'/'+afiliado);
   }
 
 
@@ -57,8 +61,8 @@ export class ProductService {
     return this.http.get(this.baseUrlComercio);
   }
 
-  obtenerCategorias():Observable<any>{
-    return this.http.get(this.baseUrlCat);
+  obtenerCategorias(compania:any,afiliado:any):Observable<any>{
+    return this.http.get(this.baseUrlCat+'/'+compania+'/'+afiliado);
   }
 
   obtenerDepartamento():Observable<any>{
@@ -85,18 +89,27 @@ export class ProductService {
 
 
   list(): Observable<IProducto[]> {
-    const url = `${this.baseUrl}/`;
+    const url = `${this.baseUrl}/+${this.arrayDelService.compania}/+${this.arrayDelService.afiliado}`;
     return this.http.get<IProducto[]>(url);
   }
 
 
+  setArray(array: any) {
+    this.arrayDelService = array;
+  }
+  
+  getArray() {
+    return this.arrayDelService;
+  }
 
 
   private get productosObjeto(): Observable<IProducto[]> {
     /*   const url = `${this.baseUrl}/`;
      return this.http.get<IProducto[]>(url);
      */
-    const url = `${this.baseUrl}/`;
+
+    console.log('DESDE EL SERVICIO QUE MANDA A LLAMAR LOS PRODUCTOS'+JSON.stringify(this.arrayDelService)); 
+    const url = `${this.baseUrl}/+${this.arrayDelService.compania}/+${this.arrayDelService.afiliado}`;
 
 
     this.ProductosObjeto = this.http.get<IProducto[]>(url).pipe(map(data => data));

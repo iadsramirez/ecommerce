@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeamSlider, TestimonialSlider } from '../../shared/data/slider';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { Router } from '@angular/router';
+import { ComercioPK } from '../../modelo/ComercioPK';
 
 @Component({
   selector: 'app-about-us',
@@ -30,15 +31,18 @@ export class AboutUsComponent implements OnInit {
   }
 
 
-  redireccionar(nombre:any,imagen:any){
+  redireccionar(nombre:any,imagen:any,data:any){
+
+    console.log('COMPANIA objeto'+JSON.stringify(data));
+
     let nom:string;
 
     const comercial={valor:nom};
 
     localStorage.setItem('comercio', JSON.stringify(nombre));
     localStorage.setItem('comercioImg', imagen);
-
-    this.router.navigateByUrl('/home/tools');
+    console.log('data.comercioPK.idCompania:'+data.comercioPK.idCompania);
+    this.router.navigateByUrl('/home/tools/'+data.comercioPK.idCompania+'/'+data.comercioPK.idAfiliado);
   }
 
 

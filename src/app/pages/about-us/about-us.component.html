@@ -6,7 +6,7 @@
             
             <div class="col-lg-12">
                 <div class="banner-section">
-                    <img  src="assets/images/proveedor2.jpg" class="img-fluid" alt="about-us"/>
+                    <img  src="assets/images/proveedor2.jpg" height="600" width="1000" class="img-fluid" alt="about-us"/>
                 </div>
             </div>
             <!--
@@ -29,7 +29,7 @@
                 <owl-carousel-o class="slide-2 testimonial-slider no-arrow" [options]="TestimonialSliderConfig">
                     <ng-container *ngFor="let ts of proveedor">
                       <ng-template carouselSlide>
-                          <div (click)="redireccionar(ts.nombre,ts.url);">
+                          <div (click)="redireccionar(ts.nombre,ts.url,ts);">
                             <div class="media">
                                 <div class="text-center">
                                     <img src="assets/images/testimonial/3.jpg" alt="image">

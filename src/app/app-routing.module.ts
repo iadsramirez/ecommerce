@@ -18,7 +18,9 @@ const routes: Routes = [
 /*
   { path: 'pages/login', component: LoginComponent },
   { path: '', redirectTo: 'pages/login', pathMatch: 'full' },*/
-  { path: 'home/tools',component: ToolsComponent},
+  
+  //{ path: 'home/tools',component: ToolsComponent},
+  { path: 'home/tools/:id/:afiliado',component: ToolsComponent},
   { path: '', redirectTo: 'home/tools', pathMatch: 'full' },
 
   {

@@ -6,6 +6,7 @@ import { Product } from '../../../shared/classes/product';
 import { IProducto } from 'src/app/modelo/IProducto';
 import { CategoriaProd } from 'src/app/modelo/CategoriaProd';
 import { CollectionSlider } from 'src/app/shared/data/slider';
+import { Afiliado } from '../../../modelo/Afiliado';
 
 @Component({
   selector: 'app-collection-left-sidebar',
@@ -34,12 +35,34 @@ export class CollectionLeftSidebarComponent implements OnInit {
   public sortBy: string; // Sorting Order
   public mobileSidebar: boolean = false;
   public loader: boolean = true;
+  COMPANIA:any;
+  AFILIADO:any;
 
-  constructor(private route: ActivatedRoute, private router: Router,
+  constructor(private activateRoute: ActivatedRoute,private route: ActivatedRoute, private router: Router,
     private viewScroller: ViewportScroller, public productService: ProductService) {
 
+      if(this.activateRoute.snapshot.params['id']){
+        this.COMPANIA=this.activateRoute.snapshot.params['id'];
+      }else{
+        this.COMPANIA=1;
+      }
 
-      this.productService.obtenerCategorias().subscribe(
+      if(this.activateRoute.snapshot.params['afiliado']){
+        this.AFILIADO=this.activateRoute.snapshot.params['afiliado'];
+      }else{
+        this.AFILIADO=1;
+      }
+
+      const objetoParam={
+        compania:this.COMPANIA,
+        afiliado:this.AFILIADO
+      };
+
+      this.productService.setArray(objetoParam);
+
+
+
+      this.productService.obtenerCategorias(this.COMPANIA,this.AFILIADO).subscribe(
         catego=>{
           this.listaCategoriaTemp=catego;
           this.listaCategoriaTemp.forEach(elemento=>{

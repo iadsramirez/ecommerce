@@ -5,6 +5,7 @@ import { Product } from '../../shared/classes/product';
 import { ProductService } from '../../shared/services/product.service';
 import {CategoriaProd} from '../../modelo/CategoriaProd';
 import { SettingsComponent } from 'src/app/shared/components/settings/settings.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tools',
@@ -26,21 +27,36 @@ export class ToolsComponent implements OnInit, OnDestroy {
   listaImagenBanner:Array<any>;
   lista:any=[];
   limpiar:boolean;
+  COMPANIA:any;
+  AFILIADO:any;
 
   
   //@ViewChild(SettingsComponent) hijo: SettingsComponent;
 
 
-  constructor(private _sanitizer:DomSanitizer,
+  constructor(private activateRoute: ActivatedRoute,private _sanitizer:DomSanitizer,
     public productService: ProductService) {
+
+      if(this.activateRoute.snapshot.params['id']){
+        this.COMPANIA=this.activateRoute.snapshot.params['id'];
+      }else{
+        this.COMPANIA=1;
+      }
+
+      if(this.activateRoute.snapshot.params['afiliado']){
+        this.AFILIADO=this.activateRoute.snapshot.params['afiliado'];
+      }else{
+        this.AFILIADO=1;
+      }
 
       this.limpiar=true;
 
      // window.location.reload(true);
 
      localStorage.setItem('cartItems', '');
+     
       
-      this.productService.obtenerImagenBanner().subscribe(
+      this.productService.obtenerImagenBanner(this.COMPANIA,this.AFILIADO).subscribe(
         imagenes=>{
           //console.log('Imagenes'+JSON.stringify(imagenes));
           this.listaImagenBanner=imagenes;
@@ -55,7 +71,8 @@ export class ToolsComponent implements OnInit, OnDestroy {
     
       localStorage.setItem('cartItems', '');
 
-     this.productService.obtenerCategorias().subscribe(
+
+     this.productService.obtenerCategorias(this.COMPANIA,this.AFILIADO).subscribe(
        catego=>{
          this.listaCategoriaTemp=catego;
          this.listaCategoriaTemp.forEach(elemento=>{
