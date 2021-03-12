@@ -37,6 +37,9 @@ export class ToolsComponent implements OnInit, OnDestroy {
   constructor(private activateRoute: ActivatedRoute,private _sanitizer:DomSanitizer,
     public productService: ProductService) {
 
+      console.log('this.activateRoute.snapshot.params[id]:'+this.activateRoute.snapshot.params['id']);
+      console.log('this.activateRoute.snapshot.params[afiliado]'+this.activateRoute.snapshot.params['afiliado']);
+
       if(this.activateRoute.snapshot.params['id']){
         this.COMPANIA=this.activateRoute.snapshot.params['id'];
       }else{

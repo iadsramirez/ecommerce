@@ -72,7 +72,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'collection/left/sidebar',
+    path: 'collection/left/sidebar/:id/:afiliado',
     component: CollectionLeftSidebarComponent
   },
   {

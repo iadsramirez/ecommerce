@@ -41,6 +41,8 @@ export class CollectionLeftSidebarComponent implements OnInit {
   constructor(private activateRoute: ActivatedRoute,private route: ActivatedRoute, private router: Router,
     private viewScroller: ViewportScroller, public productService: ProductService) {
 
+      console.log('this.activateRoute.snapshot.params[id] desde producto'+this.activateRoute.snapshot.params['id']);
+
       if(this.activateRoute.snapshot.params['id']){
         this.COMPANIA=this.activateRoute.snapshot.params['id'];
       }else{
