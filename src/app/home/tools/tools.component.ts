@@ -5,7 +5,7 @@ import { Product } from '../../shared/classes/product';
 import { ProductService } from '../../shared/services/product.service';
 import {CategoriaProd} from '../../modelo/CategoriaProd';
 import { SettingsComponent } from 'src/app/shared/components/settings/settings.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tools',
@@ -16,8 +16,11 @@ export class ToolsComponent implements OnInit, OnDestroy {
 
   public themeLogo: string = 'assets/images/icon/logo-5.png';
 
+
+
   nombreComercio:any;
   nombreComercioOriginal:any;
+  public url="/shop/collection/left/sidebar";
   //logoUrl = "http://207.180.199.154:8080/ecommerce/img/ARALSOFT/Promocion/TECNOLOGIA";
 
   public products: Product[] = [];
@@ -27,30 +30,50 @@ export class ToolsComponent implements OnInit, OnDestroy {
   listaImagenBanner:Array<any>;
   lista:any=[];
   limpiar:boolean;
-  COMPANIA:any;
-  AFILIADO:any;
+ public comp:any;
+ public afiliado:any;
 
   
   //@ViewChild(SettingsComponent) hijo: SettingsComponent;
 
 
   constructor(private activateRoute: ActivatedRoute,private _sanitizer:DomSanitizer,
-    public productService: ProductService) {
+    public productService: ProductService,private router:Router) {
 
       console.log('this.activateRoute.snapshot.params[id]:'+this.activateRoute.snapshot.params['id']);
       console.log('this.activateRoute.snapshot.params[afiliado]'+this.activateRoute.snapshot.params['afiliado']);
 
       if(this.activateRoute.snapshot.params['id']){
-        this.COMPANIA=this.activateRoute.snapshot.params['id'];
+        this.comp=this.activateRoute.snapshot.params['id'];
+        
       }else{
-        this.COMPANIA=1;
+        this.comp=1;
       }
 
       if(this.activateRoute.snapshot.params['afiliado']){
-        this.AFILIADO=this.activateRoute.snapshot.params['afiliado'];
+        this.afiliado=this.activateRoute.snapshot.params['afiliado'];
       }else{
-        this.AFILIADO=1;
+        this.afiliado=1;
       }
+
+      if(this.activateRoute.snapshot.params['afiliado'] && this.activateRoute.snapshot.params['id']){
+        let url2='shop/collection/left/sidebar'+'/'+this.comp+'/'+this.afiliado;
+        this.url=url2;
+        this.productService.obtenerNombreComercio(this.comp,this.afiliado).
+        subscribe(
+          comercioName=>{
+            this.nombreComercioOriginal=comercioName.nombre;
+          }
+        )
+      }
+
+      if(this.productService.getArray()){
+        
+        let url2='shop/collection/left/sidebar'+'/'+this.productService.getArray().compania+'/'+this.productService.getArray().afiliado;
+        this.url=url2;
+      }
+
+      console.log('valor de la mierda'+this.url);
 
       this.limpiar=true;
 
@@ -59,7 +82,7 @@ export class ToolsComponent implements OnInit, OnDestroy {
      localStorage.setItem('cartItems', '');
      
       
-      this.productService.obtenerImagenBanner(this.COMPANIA,this.AFILIADO).subscribe(
+      this.productService.obtenerImagenBanner(this.comp,this.afiliado).subscribe(
         imagenes=>{
           //console.log('Imagenes'+JSON.stringify(imagenes));
           this.listaImagenBanner=imagenes;
@@ -74,8 +97,8 @@ export class ToolsComponent implements OnInit, OnDestroy {
     
       localStorage.setItem('cartItems', '');
 
-
-     this.productService.obtenerCategorias(this.COMPANIA,this.AFILIADO).subscribe(
+      this.listaCategoriaTemp=[];   
+     this.productService.obtenerCategorias(this.comp,this.afiliado).subscribe(
        catego=>{
          this.listaCategoriaTemp=catego;
          this.listaCategoriaTemp.forEach(elemento=>{
@@ -201,7 +224,9 @@ export class ToolsComponent implements OnInit, OnDestroy {
   }
 
 
-
+ir(){
+  this.router.navigateByUrl('/shop/collection/left/sidebar/1/1');
+}
 
 
 

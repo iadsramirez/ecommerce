@@ -35,36 +35,39 @@ export class CollectionLeftSidebarComponent implements OnInit {
   public sortBy: string; // Sorting Order
   public mobileSidebar: boolean = false;
   public loader: boolean = true;
-  COMPANIA:any;
-  AFILIADO:any;
+  comp:any;
+  afiliado:any;
 
   constructor(private activateRoute: ActivatedRoute,private route: ActivatedRoute, private router: Router,
     private viewScroller: ViewportScroller, public productService: ProductService) {
 
-      console.log('this.activateRoute.snapshot.params[id] desde producto'+this.activateRoute.snapshot.params['id']);
+      console.log('parametro compania desde el producto:'+this.activateRoute.snapshot.paramMap.get('id'));
+      
+      console.log('parametro compania desde el producto:'+this.activateRoute.snapshot.paramMap.get('id'));
 
       if(this.activateRoute.snapshot.params['id']){
-        this.COMPANIA=this.activateRoute.snapshot.params['id'];
+        this.comp=this.activateRoute.snapshot.params['id'];
       }else{
-        this.COMPANIA=1;
+        this.comp=1;
       }
 
       if(this.activateRoute.snapshot.params['afiliado']){
-        this.AFILIADO=this.activateRoute.snapshot.params['afiliado'];
+        this.afiliado=this.activateRoute.snapshot.params['afiliado'];
       }else{
-        this.AFILIADO=1;
+        this.afiliado=1;
       }
 
       const objetoParam={
-        compania:this.COMPANIA,
-        afiliado:this.AFILIADO
+        compania:this.comp,
+        afiliado:this.afiliado
       };
 
       this.productService.setArray(objetoParam);
 
 
+      
 
-      this.productService.obtenerCategorias(this.COMPANIA,this.AFILIADO).subscribe(
+      this.productService.obtenerCategorias(this.comp,this.afiliado).subscribe(
         catego=>{
           this.listaCategoriaTemp=catego;
           this.listaCategoriaTemp.forEach(elemento=>{

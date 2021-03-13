@@ -7,6 +7,7 @@ import { ElementsComponent } from './elements/elements.component';
 import { LoginComponent } from './pages/account/login/login.component';
 import { CaruselComponent } from './shop/carusel/carusel.component';
 import { ToolsComponent } from './home/tools/tools.component';
+import { CollectionLeftSidebarComponent } from './shop/collection/collection-left-sidebar/collection-left-sidebar.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,8 @@ const routes: Routes = [
   
   //{ path: 'home/tools',component: ToolsComponent},
   { path: 'home/tools/:id/:afiliado',component: ToolsComponent},
+  { path: 'shop/collection/left/sidebar/:id/:afiliado',component: CollectionLeftSidebarComponent},
+
   { path: '', redirectTo: 'home/tools', pathMatch: 'full' },
 
   {

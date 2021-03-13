@@ -33,6 +33,7 @@ export class ProductService {
   private baseUrlCat="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio/categorias";
   private baseUrlComercio="http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio/comerciosPorAfiliado/1/1";
   private basUrlImagenBanner:string='http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.promocion';
+  private baseUrlComercioNombre='http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.comercio/comercioInicialAfiliado/';
   private arrayDelService:any;
 
   constructor(private http: HttpClient,
@@ -46,6 +47,12 @@ export class ProductService {
   */
 
   //////////////////////////////////////////////////////////
+
+  obtenerNombreComercio(cia:any,afiliado:any):Observable<any>{
+    //http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.promocion/
+    return this.http.get(this.baseUrlComercioNombre+cia+'/'+afiliado);
+  }
+
 
   obtenerImagenBanner(cia:any,afiliado:any):Observable<any>{
     //http://207.180.199.154:8080/ecommerce/webresources/com.ecommerce.entidades.promocion/

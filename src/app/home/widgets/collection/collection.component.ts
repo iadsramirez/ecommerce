@@ -11,6 +11,9 @@ export class CollectionComponent implements OnInit {
   @Input() categories: any[];
   @Input() category: string;
   @Input() class: string;
+  @Input() comp: number;
+  @Input() afiliado: number;
+
 
   constructor() { }
 

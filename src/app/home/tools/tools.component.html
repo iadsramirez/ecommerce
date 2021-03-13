@@ -25,9 +25,9 @@
                         <div class="col">
                             <div class="slider-contain">
                                 <div>
-                                    <h4>Bienvenidos{{COMPANIA}}-{{AFILIADO}}</h4>
+                                    <h4>Bienvenidos</h4>
                                     <h4 style="color: black;font-weight: bolder;">{{nombreComercioOriginal}}</h4> <!--[queryParams]="{ category: 'tools'}"-->
-                                    <a [routerLink]="['/shop/collection/left/sidebar',COMPANIA,AFILIADO]"  class="btn btn-solid">Comprar Ahora</a>
+                                    <a [routerLink]="['/shop/collection/left/sidebar',comp,afiliado]"  class="btn btn-solid">Comprar Ahora</a>
                                 </div>
                             </div>
                         </div>
@@ -89,26 +89,7 @@
                 </div>
             </div>
         </ng-template>
-        <ng-template carouselSlide *ngIf="false">
-            <div class="home text-center" [ngStyle]="{'background-image': 'url(assets/images/slider/33.jpg)'}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="slider-contain">
-                                <div>
-                                    <h4>Ahorra Comprando</h4>
-                                    <h4>{{nombreComercioOriginal}}</h4>
-                                    <a [routerLink]="['/shop/collection/left/sidebar']" [queryParams]="{ category: 'tools'}" class="btn btn-solid">Comprar Ahora</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tools-parts" id="tools-move2">
-                        <img src="assets/images/slider/35.jpg" class="img-fluid" alt="">
-                    </div>
-                </div>
-            </div>
-        </ng-template>
+   
     </owl-carousel-o>
 
     <owl-carousel-o [options]="HomeSliderConfig" class="home-slider"  *ngIf="lista?.length == 0">
@@ -123,7 +104,7 @@
                                 <div>
                                     <h4>Bienvenidos</h4>
                                     <h4 style="color: black;font-weight: bolder;">{{nombreComercioOriginal}}</h4> <!--[queryParams]="{ category: 'tools'}"-->
-                                    <a [routerLink]="['/shop/collection/left/sidebar']"  class="btn btn-solid">Comprar Ahora</a>
+                                    <a [routerLink]="['/shop/collection/left/sidebar',comp,afiliado]"  class="btn btn-solid">Comprar Ahora</a>
                                 </div>
                             </div>
                         </div>
@@ -227,7 +208,9 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <app-collection [class]="'pt-0'" [categories]="listaCategoria" [category]="'tools'">
+                <app-collection [class]="'pt-0'" [categories]="listaCategoria" [category]="'tools'" [comp]="comp"
+                [afiliado]="afiliado"
+                >
                 </app-collection>
             </div>
         </div>

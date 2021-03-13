@@ -61,7 +61,7 @@
                                               <img [src]="cats.image"  alt=""  width="400" height="200">
                                               <small><strong>{{cats.title}}</strong></small>
                                               <ul class="category-link" [innerHTML]="cats.text"></ul>
-                                              <a [routerLink]="['/shop/collection/left/sidebar']"
+                                              <a [routerLink]="['/shop/collection/left/sidebar',comp,afiliado]"
                                                  [queryParams]="{ category: cats.codigoCategoria}"
                                                  class="btn btn-outline">
                                                  ver mas
